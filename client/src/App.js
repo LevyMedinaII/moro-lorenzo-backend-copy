@@ -13,7 +13,6 @@ class App extends Component {
   componentDidMount() {
     axios.get('/users')
       .then(res => {
-        console.log(res)
         this.setState({ test: res.data })
       }).catch(err => {
         console.log(err)
