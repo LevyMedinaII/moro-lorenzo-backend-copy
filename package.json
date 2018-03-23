@@ -1,0 +1,25 @@
+{
+  "name": "intern-platform-alpha",
+  "version": "1.0.0",
+  "description": "Alpha version of the Intern Platform, an online marketplace for internship seekers and companies",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://LevyMedinaII@bitbucket.org/intern-platform/intern-platform-alpha.git"
+  },
+  "author": "Levy V. Medina II",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/intern-platform/intern-platform-alpha#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.2"
+  }
+}
