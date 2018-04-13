@@ -17,7 +17,11 @@
   "homepage": "https://bitbucket.org/intern-platform/intern-platform-alpha#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
-    "express": "^4.16.3"
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "pg": "^7.4.1",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.37.6"
   },
   "devDependencies": {
     "nodemon": "^1.17.2"
