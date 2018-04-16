@@ -29,7 +29,7 @@ APP.use('/sales-transactions', require('./resources/sales-transactions/sales-tra
 APP.use('/visits', require('./resources/visits/visits'))
 APP.use('/walk-in-clients', require('./resources/walk-in-clients/walk-in-clients'))
 
-// Set application port
+// Set application port and run
 APP.listen(APP_PORT, () => {
   console.log('Application Running')
   console.log('PORT:', APP_PORT)
