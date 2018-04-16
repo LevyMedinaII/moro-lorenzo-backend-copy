@@ -1,22 +1,22 @@
 const Sequelize = require('../../db/config').Sequelize
 let db = require('../../db/index.js')
-let Person = db.Person
+let Persons = db.Persons
 
 module.exports = {
   get: () => {
-    return Person.findAll()
+    return Persons.findAll()
   },
   getOne: (id) => {
-    return Person.findById(id)
+    return Persons.findById(id)
   },
   add: (last_name, first_name, type) => {
-    return Person.create({ last_name, first_name, type })
+    return Persons.create({ last_name, first_name, type })
   },
   deleteOne: (id) => {
-    return Person.destroy({ where: { id } })
+    return Persons.destroy({ where: { id } })
   },
   delete: (id_range) => {
-    return Person.destroy({
+    return Persons.destroy({
       where: {
         id: {
           [Sequelize.Op.contains]: id_range
@@ -25,6 +25,6 @@ module.exports = {
     })
   },
   update: (id, last_name, first_name, type) => {
-    return Person.update({ last_name, first_name, type }, { where: { id } })
+    return Persons.update({ last_name, first_name, type }, { where: { id } })
   },
 }

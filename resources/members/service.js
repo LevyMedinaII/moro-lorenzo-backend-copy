@@ -1,21 +1,21 @@
 let db = require('../../db/index.js')
-let Message = db.Message
+let Members = db.Members
 
 module.exports = {
   get: () => {
-    return Message.findAll()
+    return Members.findAll()
   },
   getOne: (id) => {
-    return Message.findById(id)
+    return Members.findById(id)
   },
   add: (content) => {
-    return Message.create({ content })
+    return Members.create({ content })
   },
   deleteOne: (id) => {
-    return Message.destroy({ where: { id } })
+    return Members.destroy({ where: { id } })
   },
   delete: (id_range) => {
-    return Message.destroy({
+    return Members.destroy({
       where: {
         id: {
           [Sequelize.Op.contains]: id_range
@@ -24,6 +24,6 @@ module.exports = {
     })
   },
   update: (id, last_name, first_name, type) => {
-    return Message.update({ last_name, first_name, type }, { where: { id } })
+    return Members.update({ last_name, first_name, type }, { where: { id } })
   },
 }
