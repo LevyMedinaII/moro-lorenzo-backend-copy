@@ -1,24 +1,24 @@
 let router = require('express').Router()
 let service = require('./service')
 
-// GET /sales-transactions
+// GET /logs
 router.get('/', async (req, res) => {
   res.send(await service.get())
 })
 
-// GET /sales-transactions/:id
+// GET /logs/:id
 router.get('/:id',  async (req, res) => {
   res.send(await service.getOne(req.params.id))
 })
 
-// POST /sales-transactions
+// POST /logs
 // Required Data:
 // - STRING content
 router.post('/', async (req, res) => {
   res.send(await service.add(req.body.content))
 })
 
-// PUT /sales-transactions
+// PUT /logs
 // Required Data:
 // - STRING last_name
 // - STRING first_name
@@ -28,12 +28,12 @@ router.put('/:id', async (req, res) => {
 })
 
 
-// DELETE /sales-transactions/:id
+// DELETE /logs/:id
 router.delete('/:id', async(req, res) => {
   res.send(await service.deleteOne(req.params.id))
 })
 
-// DELETE /sales-transactions
+// DELETE /logs
 // Required Data:
 // - [STRING] id_range
 router.delete('/', async(req, res) => {

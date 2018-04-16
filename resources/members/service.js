@@ -23,6 +23,9 @@ module.exports = {
       }
     })
   },
+  deleteInactive: () => {
+    return Members.destroy({ where: { activity: 'Inactive' } })
+  },
   update: (id, last_name, first_name, type) => {
     return Members.update({ last_name, first_name, type }, { where: { id } })
   },
