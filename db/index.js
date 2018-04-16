@@ -1,16 +1,52 @@
 const DB_CONFIG = require('./config')
-const Person = require('./models/person')
-const Message = require('./models/message')
+
+const Members = require('./models/members')
+const MembershipPackages = require('./models/membership-packages')
+const Messages = require('./models/messages')
+const Persons = require('./models/persons')
+const SalesTransactions = require('./models/sales-transactions')
+const Logs = require('./models/logs')
+const Visits = require('./models/visits')
+const WalkInClients = require('./models/walk-in-clients')
 
 /* == DECLARE relationships == */
-Message.belongsTo(Person)
+Members.hasOne(MembershipPackages)
+Members.hasMany(Messages)
+Persons.hasMany(SalesTransactions)
+Persons.hasMany(Logs)
+Persons.hasMany(Visits)
+
+Members.belongsTo(Persons)
+MembershipPackages.belongsTo(Members)
+SalesTransactions.belongsTo(Persons)
+Logs.belongsTo(Persons)
+Visits.belongsTo(Persons)
+WalkInClients.belongsTo(Persons)
+Messages.belongsToMany(Members, { through: 'sender' })
+Messages.belongsToMany(Members, { through: 'receiver' })
 
 /* == CREATE tables == */
-Person.sync()
-Message.sync()
+createAllTables = async () => {
+  await Persons.sync()
+  await Members.sync()
+  await MembershipPackages.sync()
+  await Messages.sync()
+  await SalesTransactions.sync()
+  await Logs.sync()
+  await Visits.sync()
+  await WalkInClients.sync()
+}
+createAllTables()
 
 module.exports = {
   Sequelize: DB_CONFIG.Sequelize,
   sequelize: DB_CONFIG.sequelize,
-  Person, Message
+  Members,
+  MembershipPackages,
+  Messages,
+  Persons,
+  SalesTransactions,
+  Logs,
+  Visits,
+  WalkInClients,
 }

@@ -1,10 +1,10 @@
-/* == Person Table == */
+/* == Persons Table == */
 // Import DB Configuration
 const DB_CONFIG = require('./../config.js')
 const Sequelize = DB_CONFIG.Sequelize
 const sequelize = DB_CONFIG.sequelize
 
-const Person = sequelize.define('person', {
+const Persons = sequelize.define('persons', {
   last_name: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -20,4 +20,4 @@ const Person = sequelize.define('person', {
   }
 })
 
-module.exports = Person
+module.exports = Persons
