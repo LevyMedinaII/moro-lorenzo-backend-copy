@@ -2,12 +2,6 @@ let router = require('express').Router()
 let service = require('./service')
 
 // GET /membership-packages
-// Returns:
-// - Type: Array of JSON Object
-// - JSON Object Attributes [NOTE: All attributes are of type STRING]:
-// ---- id
-// ---- membership_duration [FORMAT: YYYY-MM-DD]
-// ---- membership_fee
 router.get('/', async (req, res) => {
   res.send(await service.get())
 })
