@@ -8,8 +8,8 @@ module.exports = {
   getOne: (id) => {
     return MembershipPackages.findById(id)
   },
-  add: (content) => {
-    return MembershipPackages.create({ content })
+  add: (membership_duration, membership_fee) => {
+    return MembershipPackages.create({ membership_duration, membership_fee })
   },
   deleteOne: (id) => {
     return MembershipPackages.destroy({ where: { id } })
@@ -23,7 +23,7 @@ module.exports = {
       }
     })
   },
-  update: (id, last_name, first_name, type) => {
-    return MembershipPackages.update({ last_name, first_name, type }, { where: { id } })
+  update: (id, membership_duration, membership_fee) => {
+    return MembershipPackages.update({ membership_duration, membership_fee }, { where: { id } })
   },
 }

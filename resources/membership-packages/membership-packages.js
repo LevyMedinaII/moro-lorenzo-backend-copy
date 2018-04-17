@@ -13,18 +13,20 @@ router.get('/:id',  async (req, res) => {
 
 // POST /membership-packages
 // Required Data:
-// - STRING content
+// - STRING membership_duration (DATE) FORMAT: YYYY-MM-DD
+// ---- e.g. 1996-12-27
+// - STRING membership_fee
 router.post('/', async (req, res) => {
-  res.send(await service.add(req.body.content))
+  res.send(await service.add(req.body.membership_duration, req.body.membership_fee))
 })
 
 // PUT /membership-packages
 // Required Data:
-// - STRING last_name
-// - STRING first_name
-// - STRING type
+// - STRING membership_duration (DATE) FORMAT: YYYY-MM-DD
+// ---- e.g. 1996-12-27
+// - STRING membership_fee
 router.put('/:id', async (req, res) => {
-  res.send(await service.update(req.params.id, req.body.last_name, req.body.first_name, req.body.type))
+  res.send(await service.update(req.params.id, req.body.membership_duration, req.body.membership_fee))
 })
 
 // DELETE /membership-packages/:id

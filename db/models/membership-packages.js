@@ -6,7 +6,7 @@ const sequelize = DB_CONFIG.sequelize
 
 const MembershipPackages = sequelize.define('membership_packages', {
   membership_duration: {
-    type: Sequelize.STRING,
+    type: Sequelize.DATEONLY,
     allowNull: false,
   },
   membership_fee: {

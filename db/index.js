@@ -10,14 +10,13 @@ const Visits = require('./models/visits')
 const WalkInClients = require('./models/walk-in-clients')
 
 /* == DECLARE relationships == */
-Members.hasOne(MembershipPackages)
 Members.hasMany(Messages)
 Persons.hasMany(SalesTransactions)
 Persons.hasMany(Logs)
 Persons.hasMany(Visits)
 
 Members.belongsTo(Persons)
-MembershipPackages.belongsTo(Members)
+Members.belongsTo(MembershipPackages)
 SalesTransactions.belongsTo(Persons)
 Logs.belongsTo(Persons)
 Visits.belongsTo(Persons)
@@ -28,8 +27,8 @@ Messages.belongsToMany(Members, { through: 'receiver' })
 /* == CREATE tables == */
 createAllTables = async () => {
   await Persons.sync()
-  await Members.sync()
   await MembershipPackages.sync()
+  await Members.sync()
   await Messages.sync()
   await SalesTransactions.sync()
   await Logs.sync()

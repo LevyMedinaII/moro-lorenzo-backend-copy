@@ -14,17 +14,23 @@ router.get('/:id',  async (req, res) => {
 // POST /logs
 // Required Data:
 // - STRING content
+// - STRING personId
+// Optional Data:
+// - STRING date (DATE) FORMAT: YYYY-MM-DD
+// ---- e.g. 1996-12-27
 router.post('/', async (req, res) => {
-  res.send(await service.add(req.body.content))
+  res.send(await service.add(req.body.date, req.body.content, req.body.personId))
 })
 
 // PUT /logs
 // Required Data:
-// - STRING last_name
-// - STRING first_name
-// - STRING type
+// - STRING content
+// - STRING person_id
+// Optional Data:
+// - STRING date (DATE) FORMAT: YYYY-MM-DD
+// ---- e.g. 1996-12-27
 router.put('/:id', async (req, res) => {
-  res.send(await service.update(req.params.id, req.body.last_name, req.body.first_name, req.body.type))
+  res.send(await service.add(req.params.id, req.body.date, req.body.content, req.body.person_id))
 })
 
 

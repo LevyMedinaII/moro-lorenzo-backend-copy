@@ -1,4 +1,6 @@
 /* == Messages Table == */
+// Date-Time Library Import
+const moment = require('moment')
 // Import DB Configuration
 const DB_CONFIG = require('./../config.js')
 const Sequelize = DB_CONFIG.Sequelize
@@ -12,6 +14,7 @@ const Messages = sequelize.define('messages', {
   date: {
     type: Sequelize.DATEONLY,
     allowNull: false,
+    defaultValue: moment().format('MM-DD-YYYY')
   },
   time: {
     type: Sequelize.TIME,

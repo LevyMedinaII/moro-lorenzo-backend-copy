@@ -40,10 +40,6 @@ const Members = sequelize.define('members', {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  package_availed: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-  },
   contract_begin: {
     type: Sequelize.DATE,
     allowNull: false,
@@ -59,14 +55,17 @@ const Members = sequelize.define('members', {
   membership_card_status: {
     type: Sequelize.STRING,
     allowNull: false,
+    defaultValue: 'X',
   },
   membership_status: {
     type: Sequelize.STRING,
     allowNull: false,
+    defaultValue: 'ACTIVE',
   },
   activity: {
     type: Sequelize.STRING,
     allowNull: false,
+    default: 'Active',
   },
 })
 

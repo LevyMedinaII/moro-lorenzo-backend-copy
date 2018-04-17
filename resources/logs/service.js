@@ -1,5 +1,7 @@
+const moment = require('moment')
 let db = require('../../db/index.js')
 let Logs = db.Logs
+let Persons = db.Persons
 
 module.exports = {
   get: () => {
@@ -8,8 +10,14 @@ module.exports = {
   getOne: (id) => {
     return Logs.findById(id)
   },
-  add: (content) => {
-    return Logs.create({ content })
+  add: async (date, content, personId) => {
+    try {
+      if (!date) date = moment()
+      let person =  await Persons.findOne({ where: { id: personId } })
+      return Logs.create({ date, content, personId })
+    } catch (err) {
+      return err
+    }
   },
   deleteOne: (id) => {
     return Logs.destroy({ where: { id } })
@@ -23,7 +31,13 @@ module.exports = {
       }
     })
   },
-  update: (id, last_name, first_name, type) => {
-    return Logs.update({ last_name, first_name, type }, { where: { id } })
+  update: async (id, date, content, personId) => {
+    try {
+      let log =  await Logs.findOne({ where: { id } })
+      let personId = await Persons.findOne({ where: { id: personId } })
+      return Logs.update({ date, content, personId }, { where: { id } })
+    } catch (err) {
+      return err
+    }
   },
 }
