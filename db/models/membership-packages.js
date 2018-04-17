@@ -10,7 +10,7 @@ const MembershipPackages = sequelize.define('membership_packages', {
     allowNull: false,
   },
   membership_fee: {
-    type: Sequelize.DATE,
+    type: Sequelize.STRING,
     allowNull: false,
   },
 })
