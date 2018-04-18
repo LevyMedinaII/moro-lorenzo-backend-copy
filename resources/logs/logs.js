@@ -15,19 +15,17 @@ router.get('/:id', auth.ensureAdmin, async (req, res) => {
 // POST /logs
 // Required Data:
 // - STRING content
-// - STRING personId
-// Optional Data:
+// - STRING person_id
 // - STRING date (DATE) FORMAT: YYYY-MM-DD
 // ---- e.g. 1996-12-27
 router.post('/', auth.ensureAdmin, async (req, res) => {
-  res.send(await service.add(req.body.date, req.body.content, req.body.personId))
+  res.send(await service.add(req.body.date, req.body.content, req.body.person_id))
 })
 
-// PUT /logs
+// PUT /logs/:id
 // Required Data:
 // - STRING content
 // - STRING person_id
-// Optional Data:
 // - STRING date (DATE) FORMAT: YYYY-MM-DD
 // ---- e.g. 1996-12-27
 router.put('/:id', auth.ensureAdmin, async (req, res) => {

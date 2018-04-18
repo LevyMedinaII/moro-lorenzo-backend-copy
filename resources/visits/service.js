@@ -8,8 +8,8 @@ module.exports = {
   getOne: (id) => {
     return Visits.findById(id)
   },
-  add: (content) => {
-    return Visits.create({ content })
+  add: (date, time_in, time_out, personId) => {
+    return Visits.create({ date, time_in, time_out, personId })
   },
   deleteOne: (id) => {
     return Visits.destroy({ where: { id } })
@@ -23,7 +23,7 @@ module.exports = {
       }
     })
   },
-  update: (id, last_name, first_name, type) => {
-    return Visits.update({ last_name, first_name, type }, { where: { id } })
+  update: (id, date, time_in, time_out, personId) => {
+    return Visits.update({ date, time_in, time_out, personId }, { where: { id } })
   },
 }

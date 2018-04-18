@@ -1,5 +1,6 @@
 let db = require('../../db/index.js')
 let Members = db.Members
+let Persons = db.Persons
 
 module.exports = {
   get: () => {
@@ -11,7 +12,7 @@ module.exports = {
   getWeeklyReport: () => {
 
   },
-  add: (
+  add: async (
     image,
     address,
     sex,
@@ -27,7 +28,8 @@ module.exports = {
     membership_card_status,
     membership_status,
     activity,
-    membershipPackageId
+    membershipPackageId,
+    personId
   ) => {
     return Members.create({
       image,
@@ -46,6 +48,7 @@ module.exports = {
       membership_status,
       activity,
       membershipPackageId,
+      personId,
     })
   },
   delete: (id_range) => {
@@ -81,6 +84,7 @@ module.exports = {
     membership_status,
     activity,
     membershipPackageId,
+    personId
   ) => {
     return Members.update({
       image,
@@ -98,7 +102,8 @@ module.exports = {
       membership_card_status,
       membership_status,
       activity,
-      membershipPackageId
+      membershipPackageId,
+      personId
     }, {
       where: { id }
     })

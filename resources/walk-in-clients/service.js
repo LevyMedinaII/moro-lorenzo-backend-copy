@@ -8,8 +8,8 @@ module.exports = {
   getOne: (id) => {
     return WalkInClients.findById(id)
   },
-  add: (content) => {
-    return WalkInClients.create({ content })
+  add: (service_availed, amount_paid, personId) => {
+    return WalkInClients.create({ service_availed, amount_paid, personId })
   },
   deleteOne: (id) => {
     return WalkInClients.destroy({ where: { id } })
@@ -23,7 +23,7 @@ module.exports = {
       }
     })
   },
-  update: (id, last_name, first_name, type) => {
-    return WalkInClients.update({ last_name, first_name, type }, { where: { id } })
+  update: (id, service_availed, amount_paid, personId) => {
+    return WalkInClients.update({ service_availed, amount_paid, personId }, { where: { id } })
   },
 }

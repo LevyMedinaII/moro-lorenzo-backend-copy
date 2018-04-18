@@ -8,8 +8,8 @@ module.exports = {
   getOne: (id) => {
     return Messages.findById(id)
   },
-  add: (content) => {
-    return Messages.create({ content })
+  add: (content, date, time, senderId, receiverId) => {
+    return Messages.create({ content, date, time, senderId, receiverId })
   },
   deleteOne: (id) => {
     return Messages.destroy({ where: { id } })
@@ -23,7 +23,7 @@ module.exports = {
       }
     })
   },
-  update: (id, last_name, first_name, type) => {
-    return Messages.update({ last_name, first_name, type }, { where: { id } })
+  update: (id, content, date, time) => {
+    return Messages.update({ content, date, time, senderId, receiverId }, { where: { id } })
   },
 }

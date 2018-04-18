@@ -21,7 +21,7 @@ router.post('/', auth.ensureAdmin, async (req, res) => {
   res.send(await service.add(req.body.last_name, req.body.first_name, req.body.type))
 })
 
-// PUT /persons
+// PUT /persons/:id
 // Required Data:
 // - STRING last_name
 // - STRING first_name

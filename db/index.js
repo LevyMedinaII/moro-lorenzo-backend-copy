@@ -11,19 +11,14 @@ const Visits = require('./models/visits')
 const WalkInClients = require('./models/walk-in-clients')
 
 /* == DECLARE relationships == */
-Members.hasMany(Messages)
-Persons.hasMany(SalesTransactions)
-Persons.hasMany(Logs)
-Persons.hasMany(Visits)
-
-Members.belongsTo(Persons)
-Members.belongsTo(MembershipPackages)
-SalesTransactions.belongsTo(Persons)
-Logs.belongsTo(Persons)
-Visits.belongsTo(Persons)
-WalkInClients.belongsTo(Persons)
-Messages.belongsToMany(Members, { through: 'sender' })
-Messages.belongsToMany(Members, { through: 'receiver' })
+Members.belongsTo(Persons, { foreignKey: { allowNull: false } })
+Members.belongsTo(MembershipPackages, { foreignKey: { allowNull: false } })
+SalesTransactions.belongsTo(Persons, { foreignKey: { allowNull: false } })
+Logs.belongsTo(Persons, { foreignKey: { allowNull: false } })
+Visits.belongsTo(Persons, { foreignKey: { allowNull: false } })
+WalkInClients.belongsTo(Persons, { foreignKey: { allowNull: false } })
+Messages.belongsTo(Members, { as: 'sender', foreignKey: { name: 'senderId', allowNull: false } })
+Messages.belongsTo(Members, { as: 'receiver', foreignKey: { name: 'receiverId', allowNull: false } })
 
 /* == CREATE tables == */
 createAllTables = async () => {

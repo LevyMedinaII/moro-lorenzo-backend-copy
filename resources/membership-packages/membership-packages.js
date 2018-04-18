@@ -21,7 +21,7 @@ router.post('/', auth.ensureAdmin, async (req, res, next) => {
   res.send(await service.add(req.body.membership_duration, req.body.membership_fee))
 })
 
-// PUT /membership-packages
+// PUT /membership-packages/:id
 // Required Data:
 // - STRING membership_duration (DATE) FORMAT: YYYY-MM-DD
 // ---- e.g. 1996-12-27

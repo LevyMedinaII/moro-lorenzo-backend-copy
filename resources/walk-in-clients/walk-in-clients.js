@@ -14,18 +14,25 @@ router.get('/:id', auth.ensureAdmin, async (req, res) => {
 
 // POST /walk-in-clients
 // Required Data:
-// - STRING content
+// - STRING service_availed
+// - STRING amount_paid
+// - STRING/INTEGER person_id
 router.post('/', auth.ensureAdmin, async (req, res) => {
-  res.send(await service.add(req.body.content))
+  res.send(await service.add(req.body.service_availed, req.body.amount_paid, req.body.person_id))
 })
 
-// PUT /walk-in-clients
+// PUT /walk-in-clients/:id
 // Required Data:
-// - STRING last_name
-// - STRING first_name
-// - STRING type
+// - STRING service_availed
+// - STRING amount_paid
+// - STRING/INTEGER person_id
 router.put('/:id', auth.ensureAdmin, async (req, res) => {
-  res.send(await service.update(req.params.id, req.body.last_name, req.body.first_name, req.body.type))
+  res.send(await service.update(
+    req.params.id,
+    req.body.service_availed,
+    req.body.amount_paid,
+    req.body.person_id
+  ))
 })
 
 

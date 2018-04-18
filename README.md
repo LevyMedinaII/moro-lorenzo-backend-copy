@@ -11,13 +11,17 @@ E.g.:
 4. Add another environment variable named SESSION_SECRET in the .env file and set the value to any desired secret session key  
 E.g.:
 > ```SESSION_SECRET=<secret_key>```  
-5. Install node and npm if there is no existing installation (check with `node -v` and `npm-v`).
-6. Open your terminal and `cd` to this project.
-7. Run `npm install` to install all the dependencies for the project.
-8. Run `npm start` to start the backend server
+5. Add another environment variable named ADMIN_REGISTER_TOKEN in the .env file and set the value to any desired value which will be used as a code to allow admin registering
+E.g.:
+> ```ADMIN_REGISTER_TOKEN=<token_for_registering>```
+6. Install node and npm if there is no existing installation (check with `node -v` and `npm-v`).
+7. Open your terminal and `cd` to this project.
+8. Run `npm install` to install all the dependencies for the project.
+9. Run `npm start` to start the backend server
 
 ## Resources
 ### List:
+- admins
 - logs  
 - members  
 - membership-packages

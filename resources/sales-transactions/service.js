@@ -8,8 +8,8 @@ module.exports = {
   getOne: (id) => {
     return SalesTransactions.findById(id)
   },
-  add: (content) => {
-    return SalesTransactions.create({ content })
+  add: (amount, date, personId) => {
+    return SalesTransactions.create({ amount, date, personId })
   },
   deleteOne: (id) => {
     return SalesTransactions.destroy({ where: { id } })
@@ -23,7 +23,7 @@ module.exports = {
       }
     })
   },
-  update: (id, last_name, first_name, type) => {
-    return SalesTransactions.update({ last_name, first_name, type }, { where: { id } })
+  update: (id, amount, date, personId) => {
+    return SalesTransactions.update({ amount, date, personId }, { where: { id } })
   },
 }

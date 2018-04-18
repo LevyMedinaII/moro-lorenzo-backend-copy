@@ -3,37 +3,50 @@ let service = require('./service')
 let auth = require('./../auth/auth')
 let passport = auth.passport
 
-// GET /logs
+// GET /admins
 router.get('/', auth.ensureAdmin, async (req, res) => {
   res.send(await service.get())
 })
 
-// GET /logs/:id
+// GET /admins/:id
 router.get('/:id', auth.ensureAdmin, async (req, res) => {
   res.send(await service.getOne(req.params.id))
 })
 
-// POST /logs
+// POST /admins
 // Required Data:
-// - STRING content
-// - STRING personId
-// Optional Data:
-// - STRING date (DATE) FORMAT: YYYY-MM-DD
-// ---- e.g. 1996-12-27
-router.post('/', auth.ensureAdmin, async (req, res) => {
-  res.send(await service.add(req.body.username, req.body.password))
+// - STRING username
+// - STRING password
+// - STRING ADMIN_REGISTER_TOKEN
+router.post('/', async (req, res) => {
+  if (req.body.ADMIN_REGISTER_TOKEN == process.env.ADMIN_REGISTER_TOKEN)
+    res.send(await service.add(req.body.username, req.body.password))
+  else
+    res.send(new Error('INVALID CREDENTIALS'))
 })
 
+// POST /admins/login
+// Required Data:
+// - STRING username
+// - STRING password
 router.post('/login', passport.authenticate('local-strategy'), (req, res) => {
   res.send(req.user)
 })
 
+// GET /login/current
+// DESC: returns the current logged in user
+router.get('/login/current', auth.ensureAdmin, async (req, res) => {
+  res.send(req.user)
+})
+
+// POST /logout
+// DESC: destroys current login session
 router.post('/logout', auth.ensureAdmin, async (req, res) => {
   await req.logout()
   res.redirect('/')
 })
 
-// PUT /logs
+// PUT /admins
 // Required Data:
 // - STRING content
 // - STRING person_id
@@ -45,12 +58,12 @@ router.put('/:id', auth.ensureAdmin, async (req, res) => {
 })
 
 
-// DELETE /logs/:id
+// DELETE /admins/:id
 router.delete('/:id', auth.ensureAdmin, async(req, res) => {
   res.send(await service.deleteOne(req.params.id))
 })
 
-// DELETE /logs
+// DELETE /admins
 // Required Data:
 // - [STRING] id_range
 router.delete('/', auth.ensureAdmin, async(req, res) => {

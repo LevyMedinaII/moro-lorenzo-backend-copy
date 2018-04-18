@@ -50,11 +50,12 @@ router.post('/', auth.ensureAdmin, async (req, res) => {
     req.body.membership_card_status,
     req.body.membership_status,
     req.body.activity,
-    req.body.membership_package_id
+    req.body.membership_package_id,
+    req.body.person_id,
   ))
 })
 
-// PUT /members
+// PUT /members/:id
 // Required Data:
 // - STRING image (url)
 // - STRING address
@@ -93,7 +94,8 @@ router.put('/:id', auth.ensureAdmin, async (req, res) => {
     req.body.medical_condition,
     req.body.membership_card_status,
     req.body.membership_status,
-    req.body.activity
+    req.body.activity,
+    req.body.person_id,
   ))
 })
 
