@@ -21,12 +21,12 @@ const Admins = sequelize.define('admins', {
 
 // Model function for generating password
 Admins.generateHash = async (password) => {
-  return await bcrypt.hash(password, bcrypt.genSaltSync(8))
+  return await bcrypt.hashSync(password, bcrypt.genSaltSync(8))
 }
 
 // Model function for checking if password is equal to the encrypted passwords
 Admins.validatePassword = async (password, hash) => {
-  return await bcrypt.compare(password, hash)
+  return await bcrypt.compareSync(password, hash)
 }
 
 module.exports = Admins

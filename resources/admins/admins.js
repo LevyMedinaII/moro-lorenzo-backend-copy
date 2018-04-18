@@ -18,11 +18,11 @@ router.get('/:id', auth.ensureAdmin, async (req, res) => {
 // - STRING username
 // - STRING password
 // - STRING ADMIN_REGISTER_TOKEN
-router.post('/', async (req, res) => {
-  if (req.body.ADMIN_REGISTER_TOKEN == process.env.ADMIN_REGISTER_TOKEN)
+router.post('/', async (req, res, next) => {
+  if (req.body.ADMIN_REGISTER_TOKEN === process.env.ADMIN_REGISTER_TOKEN)
     res.send(await service.add(req.body.username, req.body.password))
   else
-    res.send(new Error('INVALID CREDENTIALS'))
+    res.send('INVALID TOKEN')
 })
 
 // POST /admins/login
