@@ -14,6 +14,8 @@ router.get('/:id', auth.ensureAdmin, async (req, res) => {
 })
 
 // POST /admins
+// Description: Registers an admin given the fields if the provided ADMIN_REGISTER_TOKEN
+//    matches the one in the environment file
 // Required Data:
 // - STRING username
 // - STRING password
