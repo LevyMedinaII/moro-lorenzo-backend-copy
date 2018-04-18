@@ -1,7 +1,7 @@
 /* == Admins Table == */
 // Date-Time Library Import
 const moment = require('moment')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt-nodejs')
 
 // Import DB Configuration
 const DB_CONFIG = require('./../config.js')
