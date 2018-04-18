@@ -14,11 +14,12 @@ const Messages = sequelize.define('messages', {
   date: {
     type: Sequelize.DATEONLY,
     allowNull: false,
-    defaultValue: moment().format('MM-DD-YYYY')
+    default: moment(),
   },
   time: {
     type: Sequelize.TIME,
     allowNull: false,
+    default: moment(),
   },
 })
 

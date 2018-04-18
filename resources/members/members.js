@@ -1,13 +1,14 @@
 let router = require('express').Router()
 let service = require('./service')
+let auth = require('./../auth/auth')
 
 // GET /members
-router.get('/', async (req, res) => {
+router.get('/', auth.ensureAdmin, async (req, res) => {
   res.send(await service.get())
 })
 
 // GET /members/:id
-router.get('/:id',  async (req, res) => {
+router.get('/:id', auth.ensureAdmin, async (req, res) => {
   res.send(await service.getOne(req.params.id))
 })
 
@@ -32,7 +33,7 @@ router.get('/:id',  async (req, res) => {
 // - STRING membership_status VALUES: ACTIVE, WARNING, EXPIRED
 // - STRING activity VALUES: Active, Inactive
 // - INTEGER/STRING membership_package_ids
-router.post('/', async (req, res) => {
+router.post('/', auth.ensureAdmin, async (req, res) => {
   res.send(await service.add(
     req.body.image,
     req.body.address,
@@ -74,7 +75,7 @@ router.post('/', async (req, res) => {
 // - STRING membership_status VALUES: ACTIVE, WARNING, EXPIRED
 // - STRING activity VALUES: Active, Inactive
 // - INTEGER/STRING membership_package_ids
-router.put('/:id', async (req, res) => {
+router.put('/:id', auth.ensureAdmin, async (req, res) => {
   res.send(await service.update(
     req.params.id,
     req.body.image,
@@ -97,20 +98,20 @@ router.put('/:id', async (req, res) => {
 })
 
 // DELETE /members/:id
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', auth.ensureAdmin, async (req, res) => {
   res.send(await service.deleteOne(req.params.id))
 })
 
 // DELETE /members
 // Required Data:
 // - [STRING] id_range
-router.delete('/', async (req, res) => {
+router.delete('/', auth.ensureAdmin, async (req, res) => {
   res.send(await service.delete(req.body.id_range))
 })
 
 // DELETE /inactive
 // Description: Deletes all members with column activity = INACTIVE
-router.delete('/inactive', async (req, res) => {
+router.delete('/inactive', auth.ensureAdmin, async (req, res) => {
   res.send(await service.deleteInactive())
 })
 

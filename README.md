@@ -5,13 +5,16 @@
 ## Installation
 1. Clone this repository with `git clone <repository_link>`.
 2. Create or edit the existing .env file
-3. Add an environment variable named DATABASE_URL in the .env file and set the value to your PostgreSQL database url.
+3. Add an environment variable named DATABASE_URL in the .env file and set the value to your PostgreSQL database url.  
 E.g.:
 > ```DATABASE_URL=postgres://<username>:<password>@<domain/ip>:<port>/<database_name>```
-4. Install node and npm if there is no existing installation (check with `node -v` and `npm-v`).
-5. Open your terminal and `cd` to this project.
-6. Run `npm install` to install all the dependencies for the project.
-7. Run `npm start` to start the backend server
+4. Add another environment variable named SESSION_SECRET in the .env file and set the value to any desired secret session key  
+E.g.:
+> ```SESSION_SECRET=<secret_key>```  
+5. Install node and npm if there is no existing installation (check with `node -v` and `npm-v`).
+6. Open your terminal and `cd` to this project.
+7. Run `npm install` to install all the dependencies for the project.
+8. Run `npm start` to start the backend server
 
 ## Resources
 ### List:

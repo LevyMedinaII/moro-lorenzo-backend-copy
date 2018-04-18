@@ -5,7 +5,9 @@ require('dotenv').config()
 
 /* == PACKAGE IMPORTS == */
 const express = require('express')
+const session = require('express-session')
 const bodyParser = require('body-parser')
+const passport = require('./resources/auth/auth').passport
 const models = require('./db/config')
 
 /* == APP INSTANCES and VARIABLES == */
@@ -17,9 +19,18 @@ var APP_PORT = process.env.PORT || 5000
 APP.use(bodyParser.json())
 // Enable x-www-form-urlencoded
 APP.use(bodyParser.urlencoded({ extended: true }))
+// Enable passport sessions
+APP.use(session({
+	secret: process.env.SESSION_SECRET,
+	resaveasync : true,
+	saveUninitialized: true
+}))
+APP.use(passport.initialize())
+APP.use(passport.session())
 
 /* == APP CONFIGURATION == */
 // Import routes
+APP.use('/admins', require('./resources/admins/admins'))
 APP.use('/persons', require('./resources/persons/persons'))
 APP.use('/logs', require('./resources/logs/logs'))
 APP.use('/members', require('./resources/members/members'))
@@ -29,7 +40,7 @@ APP.use('/sales-transactions', require('./resources/sales-transactions/sales-tra
 APP.use('/visits', require('./resources/visits/visits'))
 APP.use('/walk-in-clients', require('./resources/walk-in-clients/walk-in-clients'))
 
-// Set application port and run
+// Set APPlication port and run
 APP.listen(APP_PORT, () => {
   console.log('Application Running')
   console.log('PORT:', APP_PORT)

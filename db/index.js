@@ -1,5 +1,6 @@
 const DB_CONFIG = require('./config')
 
+const Admins = require('./models/admins')
 const Members = require('./models/members')
 const MembershipPackages = require('./models/membership-packages')
 const Messages = require('./models/messages')
@@ -26,6 +27,7 @@ Messages.belongsToMany(Members, { through: 'receiver' })
 
 /* == CREATE tables == */
 createAllTables = async () => {
+  await Admins.sync()
   await Persons.sync()
   await MembershipPackages.sync()
   await Members.sync()
@@ -35,11 +37,13 @@ createAllTables = async () => {
   await Visits.sync()
   await WalkInClients.sync()
 }
+
 createAllTables()
 
 module.exports = {
   Sequelize: DB_CONFIG.Sequelize,
   sequelize: DB_CONFIG.sequelize,
+  Admins,
   Members,
   MembershipPackages,
   Messages,
