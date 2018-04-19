@@ -22,7 +22,7 @@ APP.use(bodyParser.urlencoded({ extended: true }))
 // Enable passport sessions
 APP.use(session({
 	secret: process.env.SESSION_SECRET,
-	resaveasync : true,
+	resave: true,
 	saveUninitialized: true
 }))
 APP.use(passport.initialize())
