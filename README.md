@@ -1,6 +1,6 @@
 # Moro Lorenzo Gym Backend & SQL Database
 ## Requirements
-1. Latest version of NodeJS and NPM
+1. NodeJS (7.6+) and NPM (5.7.1+)
 2. PostgreSQL database
 ## Installation
 1. Clone this repository with `git clone <repository_link>`.

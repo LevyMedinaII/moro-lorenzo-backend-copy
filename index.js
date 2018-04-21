@@ -40,7 +40,7 @@ APP.use('/sales-transactions', require('./resources/sales-transactions/sales-tra
 APP.use('/visits', require('./resources/visits/visits'))
 APP.use('/walk-in-clients', require('./resources/walk-in-clients/walk-in-clients'))
 
-// Set APPlication port and run
+// Set Application port and run
 APP.listen(APP_PORT, () => {
   console.log('Application Running')
   console.log('PORT:', APP_PORT)
