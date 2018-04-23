@@ -12,6 +12,11 @@ router.get('/:id', auth.ensureAdmin, async (req, res) => {
   res.send(await service.getOne(req.params.id))
 })
 
+// GET /members/weekly_report
+router.get('/weekly_report', auth.ensureAdmin, async (req, res) => {
+  res.send(await service.getWeeklyReport())
+})
+
 // POST /members
 // Required Data:
 // - STRING image (url)

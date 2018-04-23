@@ -8,6 +8,9 @@ module.exports = {
   getOne: (id) => {
     return Visits.findById(id)
   },
+  getPersonVisits: (personId) => {
+    return Visits.findAll({ where: { personId } })
+  },
   add: (date, time_in, time_out, personId) => {
     return Visits.create({ date, time_in, time_out, personId })
   },

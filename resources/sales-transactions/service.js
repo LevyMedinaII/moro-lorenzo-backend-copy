@@ -1,4 +1,5 @@
 let db = require('../../db/index.js')
+const moment = require('moment')
 let SalesTransactions = db.SalesTransactions
 
 module.exports = {
@@ -7,6 +8,9 @@ module.exports = {
   },
   getOne: (id) => {
     return SalesTransactions.findById(id)
+  },
+  getDailySalesReport: () => {
+    
   },
   add: (amount, date, personId) => {
     return SalesTransactions.create({ amount, date, personId })

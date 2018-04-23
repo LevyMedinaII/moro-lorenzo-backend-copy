@@ -10,7 +10,7 @@ module.exports = {
     return Members.findById(id)
   },
   getWeeklyReport: () => {
-
+    return Members.findAll({ where: { membership_status: { [Op.or]: ['EXPIRED', 'WARNING'] }} })
   },
   add: async (
     image,
