@@ -28,8 +28,6 @@ APP.use(session({
 }))
 APP.use(passport.initialize())
 APP.use(passport.session())
-// Enable cross origin resource sharing
-APP.use(cors())
 
 /* == APP CONFIGURATION == */
 // Import routes
@@ -42,6 +40,9 @@ APP.use('/messages', require('./resources/messages/messages'))
 APP.use('/sales-transactions', require('./resources/sales-transactions/sales-transactions'))
 APP.use('/visits', require('./resources/visits/visits'))
 APP.use('/walk-in-clients', require('./resources/walk-in-clients/walk-in-clients'))
+
+// Enable cross origin resource sharing
+APP.use(cors())
 
 // Set Application port and run
 APP.listen(APP_PORT, () => {
