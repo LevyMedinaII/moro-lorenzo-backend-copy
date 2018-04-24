@@ -4,6 +4,7 @@
 require('dotenv').config()
 
 /* == PACKAGE IMPORTS == */
+const cors = require('cors')
 const express = require('express')
 const session = require('express-session')
 const bodyParser = require('body-parser')
@@ -27,6 +28,8 @@ APP.use(session({
 }))
 APP.use(passport.initialize())
 APP.use(passport.session())
+// Enable cross origin resource sharing
+APP.use(cors())
 
 /* == APP CONFIGURATION == */
 // Import routes
