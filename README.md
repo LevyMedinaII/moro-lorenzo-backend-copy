@@ -2,7 +2,9 @@
 ## Requirements
 1. NodeJS (7.6+) and NPM (5.7.1+)
 2. PostgreSQL database
-## Installation
+3. Docker or Docker Toolkit (Optional; For docker installation only)
+## Installation and Usage
+### Local
 1. Clone this repository with `git clone <repository_link>`.
 2. Create or edit the existing .env file
 3. Add an environment variable named DATABASE_URL in the .env file and set the value to your PostgreSQL database url.  
@@ -18,6 +20,10 @@ E.g.:
 7. Open your terminal and `cd` to this project.
 8. Run `npm install` to install all the dependencies for the project.
 9. Run `npm start` to start the backend server
+
+### Docker
+1. Run `docker-compose pull`
+2. Run `docker-compose up -d`
 
 ## Resources
 ### List:
