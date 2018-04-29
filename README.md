@@ -19,11 +19,12 @@ E.g.:
 6. Install node and npm if there is no existing installation (check with `node -v` and `npm-v`).
 7. Open your terminal and `cd` to this project.
 8. Run `npm install` to install all the dependencies for the project.
-9. Run `npm start` to start the backend server
+9. Run `npm start` to start the backend server.
 
 ### Docker
-1. Run `docker-compose pull`
-2. Run `docker-compose up -d`
+1. Install docker or the docker-toolkit if not yet installed.
+2. Run `docker-compose pull`.
+3. Run `docker-compose up -d`.
 
 ## Resources
 ### List:
