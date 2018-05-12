@@ -103,90 +103,80 @@
 					</div>
 				</div>
 			</div>
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th>ID Number</th>
-						<th>Client Name</th>
-						<th>Status</th>
-						<th>Card Status </th>
-						<th>Activity</th>
-						<th>View</th>
-						<th>Edit</th>
-						<th>Delete</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>John</td>
-						<td>Doe</td>
-						<td>john@example.com</td>
-						<td>john@example.com</td>
-						<td>john@example.com</td>
-						<td>
-							<button class="btn btn-info">View</button>
-						</td>
-						<td>
-							<button class="btn btn-primary">Edit</button>
-						</td>
-						<td>
-							<button class="btn btn-danger">Delete</button>
-						</td>
-					</tr>
-					<tr>
-						<td>Mary</td>
-						<td>Moe</td>
-						<td>mary@example.com</td>
-						<td>john@example.com</td>
-						<td>john@example.com</td>
-						<td>
-							<button class="btn btn-info">View</button>
-						</td>
-						<td>
-							<button class="btn btn-primary">Edit</button>
-						</td>
-						<td>
-							<button class="btn btn-danger">Delete</button>
-						</td>
-					</tr>
-					<tr>
-						<td>July</td>
-						<td>Dooley</td>
-						<td>july@example.com</td>
-						<td>john@example.com</td>
-						<td>john@example.com</td>
-						<td>
-							<button class="btn btn-info"> View</button>
-						</td>
-						<td>
-							<button class="btn btn-primary">Edit</button>
-						</td>
-						<td>
-							<button class="btn btn-danger">Delete</button>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+			<div id="div1">
+				<!-- <table class="table table-striped" id="mytable"> -->
+				<!-- <thead>
+						<tr>
+							<th>ID Number</th>
+							<th>Client Name</th>
+							<th>Status</th>
+							<th>Card Status </th>
+							<th>Activity</th>
+							<th>View</th>
+							<th>Edit</th>
+							<th>Delete</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>John</td>
+							<td>Doe</td>
+							<td>john@example.com</td>
+							<td>john@example.com</td>
+							<td>john@example.com</td>
+							<td>
+								<button class="btn btn-info">View</button>
+							</td>
+							<td>
+								<button class="btn btn-primary">Edit</button>
+							</td>
+							<td>
+								<button class="btn btn-danger">Delete</button>
+							</td>
+						</tr>
+						<tr>
+							<td>Mary</td>
+							<td>Moe</td>
+							<td>mary@example.com</td>
+							<td>john@example.com</td>
+							<td>john@example.com</td>
+							<td>
+								<button class="btn btn-info">View</button>
+							</td>
+							<td>
+								<button class="btn btn-primary">Edit</button>
+							</td>
+							<td>
+								<button class="btn btn-danger">Delete</button>
+							</td>
+						</tr>
+						<tr>
+							<td>July</td>
+							<td>Dooley</td>
+							<td>july@example.com</td>
+							<td>john@example.com</td>
+							<td>john@example.com</td>
+							<td>
+								<button class="btn btn-info"> View</button>
+							</td>
+							<td>
+								<button class="btn btn-primary">Edit</button>
+							</td>
+							<td>
+								<button class="btn btn-danger">Delete</button>
+							</td>
+						</tr>
+					</tbody> -->
+				<!-- </table> -->
+			</div>
 		</div>
 	</div>
 	<script>
-		function logout() {
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function () {
-				if (this.readyState == 4 && this.status == 200) {
-
-					location.href = "index.html";
-				}
-			};
-			xhttp.open("POST", "http://moro-system.herokuapp.com/admins/logout", true);
-			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			xhttp.send();
-		}
 		function showmembers() {
 			var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = function () {
 				if (this.readyState == 4 && this.status == 200) {
-					var tbl=$("<table/>").attr("id","mytable");
+					var tbl = $("<table/>").attr("id", "mytable").attr("class", "table table-striped");
 					$("#div1").append(tbl);
 					$("#mytable").append(`
 						<thead>
@@ -201,16 +191,26 @@
 						<th>Delete</th>
 					</tr>
 				</thead>`);
-					for(var i=0;i<obj.length;i++)
-					{
-							var tr="<tr>";
-							var td1="<td>"+obj[i]["id"]+"</td>";
-							var td2="<td>"+obj[i]["name"]+"</td>";
-							var td3="<td>"+obj[i]["color"]+"</td></tr>";
+					for (var i = 0; i < obj.length; i++) {
+						var tr = "<tr>";
+						var td1 = "<td>" + obj[i]["id"] + "</td>";
+						var td2 = "<td>" + obj[i]["lastname" + " firstname" + " mi"] + "</td>";
+						var td3 = "<td>" + obj[i]["membership_status"] + "</td>";
+						var td4 = "<td>" + obj[i]["membership_card_status"] + "</td>";
+						var td5 = "<td>" + obj[i]["activity"] + "</td>";
+						var td6 = `<td>
+							<button class="btn btn-info">View</button>
+						</td>`;
+						var td7 = `	<td>
+							<button class="btn btn-primary">Edit</button>
+						</td>`;
+						var td8 = `	<td>
+							<button class="btn btn-danger">Delete</button>
+						</td>`;
 
-						$("#mytable").append(tr+td1+td2+td3); 
+						$("#mytable").append(tr + td1 + td2 + td3 + td4 + td5 + td6 + td7 + td8);
 
-					}  
+					}
 				}
 			};
 			xhttp.open("GET", "http://moro-system.herokuapp.com/members", true);
@@ -218,6 +218,20 @@
 			xhttp.send();
 
 			showmembers();
+		}
+	</script>
+	<script>
+		function logout() {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function () {
+				if (this.readyState == 4 && this.status == 200) {
+
+					location.href = "index.html";
+				}
+			};
+			xhttp.open("POST", "http://moro-system.herokuapp.com/admins/logout", true);
+			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhttp.send();
 		}
 	</script>
 </body>

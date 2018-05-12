@@ -79,38 +79,75 @@
 					</button>
 				</div>
 			</div>
-			<table class="table table-striped">
-				<thead>
-					<tr>
+			<div id="div2">
+				<!-- <table class="table table-striped">
+					<thead>
+						<tr>
+							<th>ID Number</th>
+							<th>Client's Name</th>
+							<th>Membership Package</th>
+							<th>Amount </th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>John</td>
+							<td>Doe</td>
+							<td>john@example.com</td>
+							<td>john@example.com</td>
+						</tr>
+						<tr>
+							<td>Mary</td>
+							<td>Moe</td>
+							<td>mary@example.com</td>
+							<td>john@example.com</td>
+						</tr>
+						<tr>
+							<td>July</td>
+							<td>Dooley</td>
+							<td>july@example.com</td>
+							<td>john@example.com</td>
+						</tr>
+					</tbody>
+				</table> -->
+			</div>
+		</div>
+	</div>
+	<script>
+		function showsales() {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function () {
+				if (this.readyState == 4 && this.status == 200) {
+					var tbl = $("<table/>").attr("id", "mytable").attr("class", "table table-striped");
+					$("#div2").append(tbl);
+					$("#mytable").append(`
+						<thead>
+						<tr>
 						<th>ID Number</th>
 						<th>Client's Name</th>
 						<th>Membership Package</th>
-						<th>Amount </th>
+						<th>Amount</th>
 					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>John</td>
-						<td>Doe</td>
-						<td>john@example.com</td>
-						<td>john@example.com</td>
-					</tr>
-					<tr>
-						<td>Mary</td>
-						<td>Moe</td>
-						<td>mary@example.com</td>
-						<td>john@example.com</td>
-					</tr>
-					<tr>
-						<td>July</td>
-						<td>Dooley</td>
-						<td>july@example.com</td>
-						<td>john@example.com</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
+				</thead>`);
+					for (var i = 0; i < obj.length; i++) {
+						var tr = "<tr>";
+						var td1 = "<td>" + obj[i]["id"] + "</td>";
+						var td2 = "<td>" + obj[i]["lastname" + " firstname" + " mi"] + "</td>";
+						var td3 = "<td>" + obj[i]["package_availed"] + "</td>";
+						var td4 = "<td>" + obj[i]["amount"] + "</td>";
+
+						$("#mytable").append(tr + td1 + td2 + td3 + td4 + td5 + td6 + td7 + td8);
+
+					}
+				}
+			};
+			xhttp.open("GET", "http://moro-system.herokuapp.com/sales-transactions", true);
+			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhttp.send();
+
+			showsales();
+		}
+	</script>
 	<script>
 		function logout() {
 			var xhttp = new XMLHttpRequest();

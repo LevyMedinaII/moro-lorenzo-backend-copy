@@ -98,6 +98,19 @@
 					<label for="time-in" class="time">Walk-in Client</label>
 					<input type="text" id="time-in" placeholder="Input Name (Surname, Name)">
 					<button class="black-solid-btn" data-toggle="modal" data-target="#exampleModalCenter">Enter</button>
+					<br/>
+					<label class="checkbox-inline">
+						<input type="checkbox" value="">Boxing
+					</label>
+					<label class="checkbox-inline">
+						<input type="checkbox" value="">Circuit Training
+					</label>
+					<label class="checkbox-inline">
+						<input type="checkbox" value="">Gym
+					</label>
+					<label class="checkbox-inline">
+						<input type="checkbox" value="">Yoga
+					</label>
 				</div>
 				<button class="yellow-ghost-btn">
 					<a href="seelist.html">See full list</a>
@@ -146,13 +159,12 @@
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
-				// generate table
+				location.href = "index.html";
 			}
 		};
 		xhttp.open("POST", "http://moro-system.herokuapp.com/admins/logout", true);
 		xhttp.send();
 	}
-	logout();
 </script>
 
 </html>
