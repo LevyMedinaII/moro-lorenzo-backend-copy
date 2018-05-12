@@ -13,6 +13,7 @@
 	 crossorigin="anonymous">
 	</script>
 </head>
+
 <body>
 	<div id="container">
 		<div class="primary-navigation">
@@ -54,7 +55,16 @@
 		<div class="page-content">
 			<a href="home.html" class="back">
 				< Back </a>
-					<p class="date">November 20, 2017</p>
+					<p class="date">
+						<script type="text/javascript">					
+							var currentTime = new Date();
+							var locale = "en-us";
+							var month = currentTime.toLocaleString(locale, { month: "long" });
+							var day = currentTime.getDate()
+							var year = currentTime.getFullYear()
+							document.write(month + " " + day + ", " + year)		
+						</script>
+					</p>
 					<h2 class="page-title">Member's Visit History</h2>
 					<table class="table">
 						<thead>
@@ -102,4 +112,5 @@
 		xhttp.send();
 	}
 </script>
+
 </html>

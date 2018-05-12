@@ -1,5 +1,4 @@
 
-
 body{
 	margin: 0;
 	padding: 0;
@@ -42,6 +41,9 @@ input, button{
 	color: #F0D23B;
 	text-decoration: none;
 }
+.printer{
+	margin-right: 10px;
+}
 
 /* Navbar */
 #container{
@@ -49,9 +51,20 @@ input, button{
 	display: flex;
 }
 .primary-navigation{
-	height: 100vh;
-	flex: 2;
-	background-color: #F0D23B;
+	/* height: auto;
+	flex: 2; */
+	background-color: #F0D23B; 
+	height: 100%;
+	width: 300px;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	overflow-x: hidden;
+}
+.primary-navigation a:hover{
+	color: gray;
+	text-decoration: none;
 }
 .header-nav{
 	background-color: black;
@@ -60,6 +73,7 @@ input, button{
 }
 .page-content{
 	flex: 8;
+	margin-left: 300px; /* Same as the width of the sidenav */
 }
 .header-title-text{
 	color: #F0D23B;
@@ -120,8 +134,10 @@ hr{
 .modal{
 	background-color: rgba(0,0,0,0.8);
 }
-
-
+img{
+	width: 40px;
+	margin: 0 10px;
+}
 .time { 
 	display: inline-block; 
 	width: 100px; 
@@ -149,9 +165,11 @@ hr{
 }
 
 .date{
-		float: right;
+	float: right;
 	margin-top: 10px;
 	font-weight: 600;
+	font-size: 16px;
+
 }
 /*Add new member */
 .page-title{
@@ -188,6 +206,7 @@ hr{
 .back{
 	float: left;
 }
+
 /* Popup container - can be anything you want */
 .popup {
     position: fixed;
@@ -244,4 +263,19 @@ hr{
 	align-items: center;
 	margin-top: 50px;
 	justify-content: space-between;
+}
+.members-buttons{
+	display: flex;
+	align-items: center;
+}
+.red-ghost-btn{
+	background-color: transparent;
+	padding: 10px 30px;
+	border: none;
+	margin: 0 auto;
+	border: 2px solid #FF0000;
+}
+.filter{
+	padding: 7px 15px;
+	font-size: 14px;
 }

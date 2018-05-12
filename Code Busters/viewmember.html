@@ -58,7 +58,16 @@
 			</div>
 		</div>
 		<div class="page-content">
-			<p class="date">November 20, 2017</p>
+			<p class="date">
+				<script type="text/javascript">					
+					var currentTime = new Date();
+					var locale = "en-us";
+					var month = currentTime.toLocaleString(locale, { month: "long" });
+					var day = currentTime.getDate()
+					var year = currentTime.getFullYear()
+					document.write(month + " " + day + ", " + year)		
+				</script>
+			</p>
 			<h2 class="page-title">Add New Member</h2>
 			<div class="add-new-box">
 				<div class="add-photo">

@@ -15,6 +15,7 @@
 	 crossorigin="anonymous">
 	</script>
 </head>
+
 <body>
 	<div id="container">
 		<div class="primary-navigation">
@@ -45,7 +46,7 @@
 						<a href="members.html">List of Members</a>
 					</li>
 					<li>
-						<a href="sales.html">Sales Report</a>
+						<a href="sales.html" class="active">Sales Report</a>
 					</li>
 					<li>
 						<a onclick="logout()">Logout</a>
@@ -54,18 +55,27 @@
 			</div>
 		</div>
 		<div class="page-content">
-			<p class="date">November 20, 2017</p>
+			<p class="date">
+				<script type="text/javascript">					
+					var currentTime = new Date();
+					var locale = "en-us";
+					var month = currentTime.toLocaleString(locale, { month: "long" });
+					var day = currentTime.getDate()
+					var year = currentTime.getFullYear()
+					document.write(month + " " + day + ", " + year)		
+				</script>
+			</p>
 			<h2 class="page-title"> Sales Report </h2>
 			<div class="members-header">
 				<div class="member-title">
-					<input type="text" placeholder="Contract Begin">
+					<input type="date" id="myDate">
 					<label for="">to</label>
-					<input type="text" placeholder="Contract End">
+					<input type="date" id="datepicker">
 				</div>
 				<div class="members-buttons">
-					<img src="	" alt="">
+					<img src="photos/printer.png" alt="">
 					<button class="black-solid-btn">
-						<a href="	">Printer Version</a>
+						Printer Version
 					</button>
 				</div>
 			</div>
@@ -115,4 +125,5 @@
 		}
 	</script>
 </body>
+
 </html>

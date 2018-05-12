@@ -28,9 +28,9 @@ module.exports = {
     membership_card_status,
     membership_status,
     activity,
-    membershipPackageId,
-    personId
+    membershipPackageId
   ) => {
+    let person = await Persons.create({ last_name, first_name, type: 'M' })
     return Members.create({
       image,
       address,
@@ -48,7 +48,7 @@ module.exports = {
       membership_status,
       activity,
       membershipPackageId,
-      personId,
+      personId: person.id
     })
   },
   delete: (id_range) => {

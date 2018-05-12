@@ -74,7 +74,16 @@
 			</div>
 		</div>
 		<div class="page-content">
-			<p class="date">November 20, 2017</p>
+			<p class="date">
+				<script type="text/javascript">					
+					var currentTime = new Date();
+					var locale = "en-us";
+					var month = currentTime.toLocaleString(locale, { month: "long" });
+					var day = currentTime.getDate()
+					var year = currentTime.getFullYear()
+					document.write(month + " " + day + ", " + year)		
+				</script>
+			</p>
 			<div class="big-box">
 				<div class="time-box">
 					<label for="time-in" class="time">Time-in:</label>
@@ -137,11 +146,13 @@
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
-				location.href = "index.html";
+				// generate table
 			}
 		};
 		xhttp.open("POST", "http://moro-system.herokuapp.com/admins/logout", true);
 		xhttp.send();
 	}
+	logout();
 </script>
+
 </html>

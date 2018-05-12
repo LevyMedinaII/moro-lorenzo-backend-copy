@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Moro Gym</title>
-	<link rel="stylesheet" href="css/styles.css">
+
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -16,7 +16,9 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
 	 crossorigin="anonymous">
 	</script>
+	<link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 	<div id="container">
 		<div class="primary-navigation">
@@ -44,7 +46,7 @@
 						<a href="addnew.html">Add New Member</a>
 					</li>
 					<li>
-						<a href="members.html">List of Members</a>
+						<a href="members.html" class="active">List of Members</a>
 					</li>
 					<li>
 						<a href="sales.html">Sales Report</a>
@@ -56,11 +58,16 @@
 			</div>
 		</div>
 		<div class="page-content">
-			<p id="demo"></p>
-			<script>
-				var d = new Date();
-				document.getElementById("demo").innerHTML = d;
-			</script>
+			<p class="date">
+				<script type="text/javascript">					
+					var currentTime = new Date();
+					var locale = "en-us";
+					var month = currentTime.toLocaleString(locale, { month: "long" });
+					var day = currentTime.getDate()
+					var year = currentTime.getFullYear()
+					document.write(month + " " + day + ", " + year)		
+				</script>
+			</p>
 			<input type="text" placeholder="Search..">
 			<div class="members-header">
 				<div class="member-title">
@@ -68,17 +75,17 @@
 				</div>
 				<div class="members-buttons">
 					<a href="">
-						<img src="photos/email.png" alt="" height="50" width="50">
+						<img src="photos/email.png" alt="">
 					</a>
-					<button>
-						<a href="	">DELETE ALL INACTIVE</a>
+					<button class="red-ghost-btn">
+						DELETE ALL INACTIVE
 					</button>
-					<img src="	" alt="">
-					<button class="black-solid-btn">
-						<a href="	">Printer Version</a>
+					<img src="photos/printer.png" alt="printer icon">
+					<button class="black-solid-btn printer">
+						Printer Version
 					</button>
-					<div class="btn-group">
-						<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<div class="btn-group	">
+						<button type="button" class="btn btn-danger dropdown-toggle filter " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							Filter by
 						</button>
 						<div class="dropdown-menu">
@@ -174,6 +181,43 @@
 			xhttp.open("POST", "http://moro-system.herokuapp.com/admins/logout", true);
 			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			xhttp.send();
+		}
+		function showmembers() {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function () {
+				if (this.readyState == 4 && this.status == 200) {
+					var tbl=$("<table/>").attr("id","mytable");
+					$("#div1").append(tbl);
+					$("#mytable").append(`
+						<thead>
+						<tr>
+						<th>ID Number</th>
+						<th>Client Name</th>
+						<th>Status</th>
+						<th>Card Status </th>
+						<th>Activity</th>
+						<th>View</th>
+						<th>Edit</th>
+						<th>Delete</th>
+					</tr>
+				</thead>`);
+					for(var i=0;i<obj.length;i++)
+					{
+							var tr="<tr>";
+							var td1="<td>"+obj[i]["id"]+"</td>";
+							var td2="<td>"+obj[i]["name"]+"</td>";
+							var td3="<td>"+obj[i]["color"]+"</td></tr>";
+
+						$("#mytable").append(tr+td1+td2+td3); 
+
+					}  
+				}
+			};
+			xhttp.open("GET", "http://moro-system.herokuapp.com/members", true);
+			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhttp.send();
+
+			showmembers();
 		}
 	</script>
 </body>

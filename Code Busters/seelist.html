@@ -12,6 +12,23 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
 	 crossorigin="anonymous">
 	</script>
+	<script>
+		function getData(){
+			var xhttp = new XMLHttpRequest();
+			var username = document.getElementById("username").value;
+			var password = document.getElementById("password").value;
+  		xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					// copy paste here
+				}
+  		};
+			xhttp.open("POST", "http://moro-system.herokuapp.com/admins/login", true);
+			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhttp.send("username="+username+"&password="+password);
+		}
+
+		getData();
+	</script>
 </head>
 
 <body>
@@ -55,7 +72,16 @@
 		<div class="page-content">
 			<a href="home.html" class="back">
 				< Back </a>
-					<p class="date">November 20, 2017</p>
+					<p class="date">
+						<script type="text/javascript">					
+							var currentTime = new Date();
+							var locale = "en-us";
+							var month = currentTime.toLocaleString(locale, { month: "long" });
+							var day = currentTime.getDate()
+							var year = currentTime.getFullYear()
+							document.write(month + " " + day + ", " + year)		
+						</script>
+					</p>
 					<h2 class="page-title">List of Clients Today</h2>
 					<table class="table">
 						<thead>
@@ -104,4 +130,5 @@
 		xhttp.send();
 	}
 </script>
+
 </html>
