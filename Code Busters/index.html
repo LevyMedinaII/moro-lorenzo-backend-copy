@@ -12,17 +12,19 @@
 		crossorigin="anonymous">
 	</script>
 	<script>
-		// function checkIfLoggedIn(){
-		// 	var xhttp = new XMLHttpRequest();
-  	// 	xhttp.onreadystatechange = function() {
-		// 		if (this.readyState == 4 && this.status == 200) {
-		// 			location.href = "home.html";
-		// 		}
-  	// 	};
-		// 	xhttp.open("GET", "http://moro-system.herokuapp.com/admins/login/current", true);
-		// 	xhttp.send();
-		// }
-		// checkIfLoggedIn();
+		function checkIfLoggedIn(){
+			var xhttp = new XMLHttpRequest();
+  		xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					alert(this.response)
+					if (this.response !== "false")
+						window.location.href = "home.html";
+				}
+  		};
+			xhttp.open("GET", "http://moro-system.herokuapp.com/admins/login/current", true);
+			xhttp.send();
+		}
+		checkIfLoggedIn();
 	</script>
 </head>
 <body>
