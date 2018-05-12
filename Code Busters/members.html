@@ -12,6 +12,11 @@
 	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>	
 
 	  <script scr="js/clock.js"></script>
+		<script
+			src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+			integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+			crossorigin="anonymous">
+		</script>
 </head>
 <body>
 
@@ -41,7 +46,7 @@
 				<li><a href="addnew.html">Add New Member</a></li>
 				<li><a href="members.html">List of Members</a></li>
 				<li><a href="sales.html">Sales Report</a></li>
-				<li><a href="logout.html">Logout</a></li>
+				<li><a  onclick="logout()">Logout</a></li>
 			</ul>
 		</div>
 
@@ -129,7 +134,7 @@
 	        <td>Mary</td>
 	        <td>Moe</td>
 	        <td>mary@example.com</td>
-			<td>john@example.com</td>
+					<td>john@example.com</td>
 	        <td>john@example.com</td>
 	        <td><button class="btn btn-info">View</button></td>
 	        <td><button class="btn btn-primary">Edit</button></td>
@@ -148,8 +153,22 @@
 	    </tbody>
 	  </table>
 	</div>
-
 </div>
+
+<script>
+	function logout(){
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				
+				location.href = "index.html";
+			}
+		};
+		xhttp.open("POST", "http://moro-system.herokuapp.com/admins/logout", true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send();
+	}
+</script>
 	
 </body>
 </html>

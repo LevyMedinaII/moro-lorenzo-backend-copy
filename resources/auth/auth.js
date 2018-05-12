@@ -19,7 +19,7 @@ module.exports = {
         throw new Error('ERROR 500: Invalid Credentials')
       next()
     } catch (err) {
-      res.send(err.message)
+      res.send(err)
     }
   },
 }

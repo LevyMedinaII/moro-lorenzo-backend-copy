@@ -2,10 +2,28 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	 <meta name="viewport" content="width=device-width, initial-scale=1">
-  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<title>Moro Gym</title>
 	<link rel="stylesheet" href="css/styles.css">
+	<script
+		src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+		crossorigin="anonymous">
+	</script>
+	<script>
+		// function checkIfLoggedIn(){
+		// 	var xhttp = new XMLHttpRequest();
+  	// 	xhttp.onreadystatechange = function() {
+		// 		if (this.readyState == 4 && this.status == 200) {
+		// 			location.href = "home.html";
+		// 		}
+  	// 	};
+		// 	xhttp.open("GET", "http://moro-system.herokuapp.com/admins/login/current", true);
+		// 	xhttp.send();
+		// }
+		// checkIfLoggedIn();
+	</script>
 </head>
 <body>
 <div class="black-box">
@@ -16,12 +34,12 @@
 		<input type="text" placeholder="username" class="login-input" id="username"> <br>
 		<input type="password" placeholder="password" class="login-input" id="password"> <br>
 
-		<button class="black-solid-btn block-btn" onclick="validate()">Login</button>
+		<button class="black-solid-btn block-btn" onclick="login()">Login</button>
 	</div>
 </div>
 
 <script>
-		function validate(){
+		function login(){
 			var xhttp = new XMLHttpRequest();
 			var username = document.getElementById("username").value;
 			var password = document.getElementById("password").value;
@@ -35,6 +53,7 @@
 			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			xhttp.send("username="+username+"&password="+password);
 		}
+
 </script>
 	
 </body>
