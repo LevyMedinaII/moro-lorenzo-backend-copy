@@ -42,7 +42,7 @@
 				<li><a href="addnew.html">Add New Member</a></li>
 				<li><a href="members.html">List of Members</a></li>
 				<li><a href="sales.html">Sales Report</a></li>
-				<li><a href="logout.html">Logout</a></li>
+				<li><a onclick="logout()">Logout</a></li>
 			</ul>
 		</div>
 
@@ -104,4 +104,18 @@
 </div>
 	
 </body>
+<script>
+	function logout(){
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				console.log(this.response);
+				location.href = "index.html";
+			}
+		};
+		xhttp.open("POST", "http://moro-system.herokuapp.com/admins/logout", true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send();
+	}
+</script>
 </html>
