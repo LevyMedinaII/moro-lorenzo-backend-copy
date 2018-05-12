@@ -6,13 +6,22 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<title>Moro Gym</title>
 	<link rel="stylesheet" href="css/styles.css">
+	<script
+		src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+		crossorigin="anonymous">
+	</script>
 	<script>
 		function checkIfLoggedIn(){
 			var xhttp = new XMLHttpRequest();
   		xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
-					console.log(this.response);
-					location.href = "home.html";
+					alert(this.response.username)
+					if (typeof this.response.username == "undefined"){
+						alert("Not Logged In");
+					} else {
+						location.href = "home.html";
+					}
 				}
   		};
 			xhttp.open("GET", "http://moro-system.herokuapp.com/admins/login/current", true);

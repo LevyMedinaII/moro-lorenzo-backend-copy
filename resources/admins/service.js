@@ -12,6 +12,8 @@ module.exports = {
   },
   add: async (username, password) => {
     try {
+      if (Admins.findOne({ where: { username } }))
+        throw new Error('Existing Admin Username')
       password = await Admins.generateHash(password)
       return Admins.create({ username, password })
     } catch (err) {
