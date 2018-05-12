@@ -1,6 +1,6 @@
 # Moro Lorenzo Gym Backend & SQL Database
 ## Requirements
-1. NodeJS (7.6+) and NPM (5.7.1+)
+1. NodeJS (8.1.0+) and NPM (5.7.1+)
 2. PostgreSQL database
 3. Docker or Docker Toolkit (Optional; For docker installation only)
 ## Installation and Usage
