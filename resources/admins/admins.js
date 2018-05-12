@@ -37,8 +37,11 @@ router.post('/login', passport.authenticate('local-strategy'), (req, res) => {
 
 // GET /login/current
 // DESC: returns the current logged in user
-router.get('/login/current', auth.ensureAdmin, async (req, res) => {
-  res.send(req.user)
+router.get('/login/current', async (req, res) => {
+  if (req.user)
+    res.send(req.user)
+  else
+    res.send(new Error('Not logged in'))
 })
 
 // POST /logout
