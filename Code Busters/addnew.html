@@ -122,7 +122,7 @@
 				if (this.readyState == 4 && this.status == 200) {
 					console.log(this.response);
 				}
-		};
+		};;
 		xhttp.open("POST", "http://moro-system.herokuapp.com/admins/login", true);
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xhttp.send("username="+username+"&password="+password);
@@ -132,11 +132,8 @@
 <script>
 	function logout(){
 		var xhttp = new XMLHttpRequest();
-		var username = document.getElementById("username").value;
-		var password = document.getElementById("password").value;
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
-				console.log(this.response);
 				location.href = "index.html";
 			}
 		};

@@ -16,13 +16,7 @@
 	</script>
 </head>
 <body>
-
-
-
-<div id="container">
-
-
-	
+<div id="container">	
 	<div class="primary-navigation">
 		<div class="header-nav">
 			<div class="header-nav-img">
@@ -114,12 +108,10 @@
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
-				console.log(this.response);
 				location.href = "index.html";
 			}
 		};
 		xhttp.open("POST", "http://moro-system.herokuapp.com/admins/logout", true);
-		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xhttp.send();
 	}
 </script>
