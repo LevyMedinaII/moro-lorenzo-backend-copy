@@ -106,12 +106,16 @@ ul li a:hover{
 	flex-direction: column;
 }
 .time-box{
-	padding: 30px 20px 30px 20px;
+	padding: 15px 20px 30px 20px;
 	border: 1px solid black;
 	box-shadow: 5px 10px 18px gray;
 	width: 600px;
 	margin: 50px 50px 20px 0;
 }
+.modal{
+	background-color: rgba(0,0,0,0.8);
+}
+
 
 .time { 
 	display: inline-block; 
@@ -138,9 +142,7 @@ ul li a:hover{
 	text-decoration: none;
 	font-weight: 700;
 }
-#demo{
 
-}
 .date{
 		float: right;
 	margin-top: 10px;
@@ -181,7 +183,55 @@ ul li a:hover{
 .back{
 	float: left;
 }
+/* Popup container - can be anything you want */
+.popup {
+    position: fixed;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 
+/* The actual popup */
+.popup .popuptext {
+    visibility: hidden;
+    width: 800px;
+    background-color:  #F0D23B;
+	color: black;
+	font-weight: 700;
+	text-transform: uppercase;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+	position: fixed;
+	left: 30%;
+    z-index: 1;
+    /* bottom: 125%;
+    left: 50%; */
+    /* margin-left: -80px; */
+}
+
+
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
 /* List of members */
 .members-header{
 	display: flex;

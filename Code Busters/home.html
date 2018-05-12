@@ -17,6 +17,8 @@
 <div id="container">
 
 
+
+
 	
 	<div class="primary-navigation">
 		<div class="header-nav">
@@ -48,19 +50,51 @@
 
 	</div>
 
+	
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h3 class="modal-title" id="exampleModalLongTitle">Confirmation Box</h3>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<p>Are you sure you want to proceed?</p>
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+						<button type="button" class="btn btn-primary">Yes</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	<div class="page-content">
 
+		
 	<p class="date">November 20, 2017</p>
 		<div class="big-box">
 			<div class="time-box">
 				<label for="time-in" class="time">Time-in:</label><input type="text" id="time-in" placeholder="Input Name (Surname, Name)">
-				<button class="black-solid-btn"><a href="">Enter</a></button> <br>
+				<button class="black-solid-btn" data-toggle="modal" data-target="#exampleModalCenter">Enter</button>
+ <br>
 				<label for="time-out" class="time">Time-out:</label><input type="text" id="time-out" placeholder="Input Name (Surname, Name)">
-				<button class="black-solid-btn"><a href="">Enter</a></button>
+				<button class="black-solid-btn"data-toggle="modal" data-target="#exampleModalCenter">Enter</button>
+	<br> <hr style=" background-color: rgba(169,169,169,1); border: 0 none; color: #eee; height: 1px;">
+				<label for="time-in" class="time">Walk-in Client</label><input type="text" id="time-in" placeholder="Input Name (Surname, Name)">
+				<button class="black-solid-btn" data-toggle="modal" data-target="#exampleModalCenter">Enter</button>
+
 			</div>
 
 			<button class="yellow-ghost-btn"><a href="seelist.html">See full list</a></button>
 		</div>
+
+	
+	
+		
+
 
 		<h2>Weekly Report</h2>
 

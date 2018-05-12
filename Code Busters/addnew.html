@@ -13,6 +13,9 @@
 <body>
 
 <div id="container">
+		<div class="popup" >
+				<span class="popuptext" id="myPopup">Member has been successfully added!</span>
+		</div>
 	
 	<div class="primary-navigation">
 		<div class="header-nav">
@@ -51,10 +54,31 @@
 
 		<div class="add-new-box">
 			<div class="add-photo">
-				
+					<input type="file" onchange="previewFile()"><br>
+					<img src="" height="200" alt="Image preview...">
 			</div>
+
+			<script>
+					function previewFile(){
+						var preview = document.querySelector('img'); //selects the query named img
+						var file    = document.querySelector('input[type=file]').files[0]; //sames as here
+						var reader  = new FileReader();
+				 
+						reader.onloadend = function () {
+							preview.src = reader.result;
+						}
+				 
+						if (file) {
+							reader.readAsDataURL(file); //reads the data as a URL
+						} else {
+							preview.src = "";
+						}
+				   }
+				 
+				   previewFile();  //calls the function named previewFile()
+			</script>
 			<div class="member-input">
-				<input type="text" id="idnum">
+				<input type="text" value="18-01001" readonly id="idnum">
 				<br>
 				<input type="text" placeholder="Last Name" id="lastname">
 				<input type="text" placeholder="First Name" id="firstname">
@@ -82,14 +106,19 @@
 					<option value="monthly">Monthly</option>
 				</select>
 
-				<input type="text" placeholder="Contract Begin" id="contractbegin">
+				<!-- <input type="text" placeholder="Contract Begin" id="contractbegin">
 				<label for="">to</label>
-				<input type="text" placeholder="Contract End" id="contractend">
+				<input type="text" placeholder="Contract End" id="contractend"> -->
+
+				<input type="date" id="myDate">
+				<label for="">to</label>
+				<input type="date" id="datepicker ">
+
 
 				<br>
 
 				<input type="text" placeholder="Any medical problems" id="med-input">
-				<select class="empty">
+				<select class="empty" id="cardstatus" >
 	    			<option value="" selected disabled>Membership Card Status</option>
 					<option value=""  disabled>Processed</option>
 					<option value="Processing">Pending</option>
@@ -102,9 +131,12 @@
 			</div>
 		</div>
 
-		<button class="black-solid-btn float-btn"><a href="home.html">Confirm</a></button>
+		<button class="black-solid-btn float-btn" onclick="addMember()">Confirm</button>
+
 
 	</div>
+
+
 
 </div>
 
@@ -116,12 +148,15 @@
 		xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
 					console.log(this.response);
+					var popup = document.getElementById("myPopup");
+    				popup.classList.toggle("show");
 				}
 		};
 		xhttp.open("POST", "http://moro-system.herokuapp.com/admins/login", true);
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xhttp.send("username="+username+"&password="+password);
 	}
+
 </script>
 
 	
