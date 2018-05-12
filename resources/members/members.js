@@ -50,7 +50,7 @@ router.post('/', auth.ensureAdmin, async (req, res) => {
     req.body.mobile_number,
     req.body.emergency_contact_number,
     req.body.contract_begin,
-    req.body.contrack_end,
+    req.body.contract_end,
     req.body.medical_condition,
     req.body.membership_card_status,
     req.body.membership_status,

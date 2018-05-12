@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	 <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<title>Moro Gym</title>
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="black-box">
+	
+</div>
+<div class="yellow-box">
+	<div class="login-details">
+		<input type="text" placeholder="username" class="login-input" id="username"> <br>
+		<input type="password" placeholder="password" class="login-input" id="password"> <br>
+
+		<button class="black-solid-btn block-btn" onclick="validate()">Login</button>
+	</div>
+</div>
+
+<script>
+		function validate(){
+			var xhttp = new XMLHttpRequest();
+			var username = document.getElementById("username").value;
+			var password = document.getElementById("password").value;
+  		xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					console.log(this.response);
+					location.href = "home.html";
+				}
+  		};
+			xhttp.open("POST", "http://moro-system.herokuapp.com/admins/login", true);
+			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhttp.send("username="+username+"&password="+password);
+		}
+</script>
+	
+</body>
+</html>

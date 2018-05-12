@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Moro Gym</title>
+	<link rel="stylesheet" href="css/styles.css">
+	 <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>	
+</head>
+<body>
+
+<div id="container">
+	
+	<div class="primary-navigation">
+		<div class="header-nav">
+			<div class="header-nav-img">
+				
+			</div>
+			<div class="header-nav-title">
+				<p class="header-title-text">
+					Moro
+				</p>
+				<p class="header-title-text">
+					Lorenzo
+				</p>
+				<p class="header-title-text">
+					Gym
+				</p>
+			</div>
+			
+		</div>
+		<div class="nav-buttons">
+			<ul>
+				<li><a href="home.html">Home</a></li>
+				<li><a href="addnew.html">Add New Member</a></li>
+				<li><a href="members.html">List of Members</a></li>
+				<li><a href="sales.html">Sales Report</a></li>
+				<li><a href="logout.html">Logout</a></li>
+			</ul>
+		</div>
+
+	</div>
+
+	<div class="page-content">
+
+	<p class="date">November 20, 2017</p>
+		<h2 class="page-title">Add New Member</h2>
+
+		<div class="add-new-box">
+			<div class="add-photo">
+				
+			</div>
+			<div class="member-input">
+				<input type="text" id="idnum">
+				<br>
+				<input type="text" placeholder="Last Name" id="lastname">
+				<input type="text" placeholder="First Name" id="firstname">
+				<input type="text" placeholder="M.I." id="mi">
+				<br>
+				<input type="text" placeholder="Current Address" id="address">
+
+				<label for="">Sex</label>
+				<label class="radio-inline">
+					<input type="radio" name="optradio" id="male">Male
+				</label>
+			    <label class="radio-inline">
+				    <input type="radio" name="optradio" id="female">Female
+				</label>	
+				<br>
+
+				<input type="text" placeholder="Email Address" id="email">
+				<input type="text" placeholder="Birthday MM/DD/YYYY" id="birthday">
+				<br>
+
+				<select class="empty" id="package">
+	    			<option value="" selected disabled>Package Enrolled</option>
+					<option value="annual" >Annual</option>
+					<option value="semi-annual" >Semi-annual</option>
+					<option value="monthly">Monthly</option>
+				</select>
+
+				<input type="text" placeholder="Contract Begin" id="contractbegin">
+				<label for="">to</label>
+				<input type="text" placeholder="Contract End" id="contractend">
+
+				<br>
+
+				<input type="text" placeholder="Any medical problems" id="med-input">
+				<select class="empty">
+	    			<option value="" selected disabled>Membership Card Status</option>
+					<option value=""  disabled>Processed</option>
+					<option value="Processing">Pending</option>
+					<option value="None">Not processed</option>
+				</select>
+
+
+
+
+			</div>
+		</div>
+
+		<button class="black-solid-btn float-btn"><a href="home.html">Confirm</a></button>
+
+	</div>
+
+</div>
+
+<script>
+	function addMember(){
+		var xhttp = new XMLHttpRequest();
+		var username = document.getElementById("username").value;
+		var password = document.getElementById("password").value;
+		xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					console.log(this.response);
+				}
+		};
+		xhttp.open("POST", "http://moro-system.herokuapp.com/admins/login", true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send("username="+username+"&password="+password);
+	}
+</script>
+
+	
+</body>
+</html>
