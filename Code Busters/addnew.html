@@ -59,7 +59,59 @@
 			</div>
 		</div>
 
-		
+		<div class="page-content">
+			<p class="date">November 20, 2017</p>
+			<h2 class="page-title">Add New Member</h2>
+			<div class="add-new-box">
+				<div class="add-photo">
+					<input type="file" onchange="previewFile()">
+					<br>
+					<img src="" height="200" alt="Image preview...">
+				</div>
+				<div class="member-input">
+					<input type="text" value="18-01001" readonly id="idnum">
+					<br>
+					<input type="text" placeholder="Last Name" id="lastname">
+					<input type="text" placeholder="First Name" id="firstname">
+					<input type="text" placeholder="M.I." id="mi">
+					<br>
+					<input type="text" placeholder="Current Address" id="address">
+
+					<label for="">Sex</label>
+					<label class="radio-inline">
+						<input type="radio" name="optradio" id="male">Male
+					</label>
+					<label class="radio-inline">
+						<input type="radio" name="optradio" id="female">Female
+					</label>
+					<br>
+
+					<input type="text" placeholder="Email Address" id="email">
+					<input type="text" placeholder="Birthday MM/DD/YYYY" id="birthday">
+					<br>
+
+					<select class="empty" id="package">
+						<option value="" selected disabled>Package Enrolled</option>
+						<option value="annual">Annual</option>
+						<option value="semi-annual">Semi-annual</option>
+						<option value="monthly">Monthly</option>
+					</select>
+					
+					<input type="date" id="myDate">
+					<label for="">to</label>
+					<input type="date" id="datepicker ">
+					<br>
+					<input type="text" placeholder="Any medical problems" id="med-input">
+					<select class="empty" id="cardstatus">
+						<option value="" selected disabled>Membership Card Status</option>
+						<option value="" disabled>Processed</option>
+						<option value="Processing">Pending</option>
+						<option value="None">Not processed</option>
+					</select>
+				</div>
+			</div>
+			<button class="black-solid-btn float-btn" onclick="addMember()">Confirm</button>
+		</div>
 	</div>
 
 	<script>
