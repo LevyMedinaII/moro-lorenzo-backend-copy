@@ -94,7 +94,12 @@ ul li a:hover{
 .active{
 	border-left: 8px solid black;
 }
-
+hr{
+	background-color: rgba(169,169,169,1); 
+	border: 0 none; 
+	color: #eee; 
+	height: 1px
+}
 /* Time-box */
 .page-content{
 	width: 900px;

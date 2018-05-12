@@ -1,54 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>Moro Gym</title>
 	<link rel="stylesheet" href="css/styles.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	 crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script
-		src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-		integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
-		crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+	 crossorigin="anonymous">
 	</script>
 </head>
+
 <body>
-<div id="container">	
-	<div class="primary-navigation">
-		<div class="header-nav">
-			<div class="header-nav-img">
-				
+	<div id="container">
+		<div class="primary-navigation">
+			<div class="header-nav">
+				<div class="header-nav-img">
+				</div>
+				<div class="header-nav-title">
+					<p class="header-title-text">
+						Moro
+					</p>
+					<p class="header-title-text">
+						Lorenzo
+					</p>
+					<p class="header-title-text">
+						Gym
+					</p>
+				</div>
 			</div>
-			<div class="header-nav-title">
-				<p class="header-title-text">
-					Moro
-				</p>
-				<p class="header-title-text">
-					Lorenzo
-				</p>
-				<p class="header-title-text">
-					Gym
-				</p>
+			<div class="nav-buttons">
+				<ul>
+					<li>
+						<a href="home.html" class="active">Home</a>
+					</li>
+					<li>
+						<a href="addnew.html">Add New Member</a>
+					</li>
+					<li>
+						<a href="members.html">List of Members</a>
+					</li>
+					<li>
+						<a href="sales.html">Sales Report</a>
+					</li>
+					<li>
+						<a onclick="logout()">Logout</a>
+					</li>
+				</ul>
 			</div>
-			
 		</div>
-		<div class="nav-buttons">
-			<ul>
-				<li><a href="home.html" class="active">Home</a></li>
-				<li><a href="addnew.html">Add New Member</a></li>
-				<li><a href="members.html">List of Members</a></li>
-				<li><a href="sales.html">Sales Report</a></li>
-				<li><a onclick="logout()">Logout</a></li>
-			</ul>
-		</div>
-
-	</div>
-
-	
-	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -59,7 +65,6 @@
 					</div>
 					<div class="modal-body">
 						<p>Are you sure you want to proceed?</p>
-
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -68,77 +73,69 @@
 				</div>
 			</div>
 		</div>
-	<div class="page-content">
-
-		
-	<p class="date">November 20, 2017</p>
-		<div class="big-box">
-			<div class="time-box">
-				<label for="time-in" class="time">Time-in:</label><input type="text" id="time-in" placeholder="Input Name (Surname, Name)">
-				<button class="black-solid-btn" data-toggle="modal" data-target="#exampleModalCenter">Enter</button>
- <br>
-				<label for="time-out" class="time">Time-out:</label><input type="text" id="time-out" placeholder="Input Name (Surname, Name)">
-				<button class="black-solid-btn"data-toggle="modal" data-target="#exampleModalCenter">Enter</button>
-	<br> <hr style=" background-color: rgba(169,169,169,1); border: 0 none; color: #eee; height: 1px;">
-				<label for="time-in" class="time">Walk-in Client</label><input type="text" id="time-in" placeholder="Input Name (Surname, Name)">
-				<button class="black-solid-btn" data-toggle="modal" data-target="#exampleModalCenter">Enter</button>
-
+		<div class="page-content">
+			<p class="date">November 20, 2017</p>
+			<div class="big-box">
+				<div class="time-box">
+					<label for="time-in" class="time">Time-in:</label>
+					<input type="text" id="time-in" placeholder="Input Name (Surname, Name)">
+					<button class="black-solid-btn" data-toggle="modal" data-target="#exampleModalCenter">Enter</button>
+					<br/>
+					<label for="time-out" class="time">Time-out:</label>
+					<input type="text" id="time-out" placeholder="Input Name (Surname, Name)">
+					<button class="black-solid-btn" data-toggle="modal" data-target="#exampleModalCenter">Enter</button>
+					<br/>
+					<hr/>
+					<label for="time-in" class="time">Walk-in Client</label>
+					<input type="text" id="time-in" placeholder="Input Name (Surname, Name)">
+					<button class="black-solid-btn" data-toggle="modal" data-target="#exampleModalCenter">Enter</button>
+				</div>
+				<button class="yellow-ghost-btn">
+					<a href="seelist.html">See full list</a>
+				</button>
 			</div>
-
-			<button class="yellow-ghost-btn"><a href="seelist.html">See full list</a></button>
+			<h2>Weekly Report</h2>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>ID Number</th>
+						<th>Member's Name</th>
+						<th>Expiration Date</th>
+						<th>Status</th>
+						<th>Contact Number</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>John</td>
+						<td>Doe</td>
+						<td>john@example.com</td>
+						<td>john@example.com</td>
+						<td>john@example.com</td>
+					</tr>
+					<tr>
+						<td>Mary</td>
+						<td>Moe</td>
+						<td>mary@example.com</td>
+						<td>john@example.com</td>
+						<td>john@example.com</td>
+					</tr>
+					<tr>
+						<td>July</td>
+						<td>Dooley</td>
+						<td>july@example.com</td>
+						<td>john@example.com</td>
+						<td>john@example.com</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
-
-	
-	
-		
-
-
-		<h2>Weekly Report</h2>
-
-		<table class="table table-striped">
-	    <thead>
-	      <tr>
-	        <th>ID Number</th>
-	        <th>Member's Name</th>
-	        <th>Expiration Date</th>
-	        <th>Status</th>
-	        <th>Contact Number</th>
-	      </tr>
-	    </thead>
-	    <tbody>
-	      <tr>
-	        <td>John</td>
-	        <td>Doe</td>
-	        <td>john@example.com</td>
-	        <td>john@example.com</td>
-	        <td>john@example.com</td>
-	      </tr>
-	      <tr>
-	        <td>Mary</td>
-	        <td>Moe</td>
-	        <td>mary@example.com</td>
-			<td>john@example.com</td>
-	        <td>john@example.com</td>
-	      </tr>
-	      <tr>
-	        <td>July</td>
-	        <td>Dooley</td>
-	        <td>july@example.com</td>
-	        <td>john@example.com</td>
-	        <td>john@example.com</td>
-	      </tr>
-	    </tbody>
-	  </table>
-
 	</div>
-
-</div>
-	
 </body>
 <script>
-	function logout(){
+	function logout() {
 		var xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function() {
+		xhttp.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
 				location.href = "index.html";
 			}
