@@ -3,12 +3,12 @@ let service = require('./service')
 let auth = require('./../auth/auth')
 
 // GET /messages
-router.get('/', auth.ensureAdmin, async (req, res) => {
+router.get('/', async (req, res) => {
   res.send(await service.get())
 })
 
 // GET /messages/:id
-router.get('/:id', auth.ensureAdmin, async (req, res) => {
+router.get('/:id', async (req, res) => {
   res.send(await service.getOne(req.params.id))
 })
 
@@ -20,7 +20,7 @@ router.get('/:id', auth.ensureAdmin, async (req, res) => {
 // - STRING time (TIME) FORMAT: HH:mm:ss
 // - STRING/INTEGER sender_id
 // - STRING/INTEGER receiver_id
-router.post('/', auth.ensureAdmin, async (req, res) => {
+router.post('/', async (req, res) => {
   res.send(await service.add(
     req.body.content,
     req.body.date,
@@ -38,7 +38,7 @@ router.post('/', auth.ensureAdmin, async (req, res) => {
 // - STRING time (TIME) FORMAT: HH:mm:ss
 // - STRING/INTEGER sender_id
 // - STRING/INTEGER receiver_id
-router.put('/:id', auth.ensureAdmin, async (req, res) => {
+router.put('/:id', async (req, res) => {
   res.send(await service.update(
     req.params.id,
     req.body.content,
@@ -50,14 +50,14 @@ router.put('/:id', auth.ensureAdmin, async (req, res) => {
 })
 
 // DELETE /messages/:id
-router.delete('/:id', auth.ensureAdmin, async (req, res) => {
+router.delete('/:id', async (req, res) => {
   res.send(await service.deleteOne(req.params.id))
 })
 
 // DELETE /messages
 // Required Data:
 // - [STRING] id_range
-router.delete('/', auth.ensureAdmin, async (req, res) => {
+router.delete('/', async (req, res) => {
   res.send(await service.delete(req.body.id_range))
 })
 

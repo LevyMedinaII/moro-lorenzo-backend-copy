@@ -4,12 +4,12 @@ let auth = require('./../auth/auth')
 let passport = auth.passport
 
 // GET /admins
-router.get('/', auth.ensureAdmin, async (req, res) => {
+router.get('/', async (req, res) => {
   res.send(await service.get())
 })
 
 // GET /admins/:id
-router.get('/:id', auth.ensureAdmin, async (req, res) => {
+router.get('/:id', async (req, res) => {
   res.send(await service.getOne(req.params.id))
 })
 
@@ -37,13 +37,16 @@ router.post('/login', passport.authenticate('local-strategy'), (req, res) => {
 
 // GET /login/current
 // DESC: returns the current logged in user
-router.get('/login/current', auth.ensureAdmin, async (req, res) => {
-  res.send(req.user)
+router.get('/login/current', async (req, res) => {
+  if (req.user)
+    res.send(req.user)
+  else
+    res.send(false)
 })
 
 // POST /logout
 // DESC: destroys current login session
-router.post('/logout', auth.ensureAdmin, async (req, res) => {
+router.post('/logout', async (req, res) => {
   res.send(await req.logout())
 })
 
@@ -54,20 +57,20 @@ router.post('/logout', auth.ensureAdmin, async (req, res) => {
 // Optional Data:
 // - STRING date (DATE) FORMAT: YYYY-MM-DD
 // ---- e.g. 1996-12-27
-router.put('/:id', auth.ensureAdmin, async (req, res) => {
+router.put('/:id', async (req, res) => {
   res.send(await service.add(req.params.id, req.body.date, req.body.content, req.body.person_id))
 })
 
 
 // DELETE /admins/:id
-router.delete('/:id', auth.ensureAdmin, async(req, res) => {
+router.delete('/:id', async(req, res) => {
   res.send(await service.deleteOne(req.params.id))
 })
 
 // DELETE /admins
 // Required Data:
 // - [STRING] id_range
-router.delete('/', auth.ensureAdmin, async(req, res) => {
+router.delete('/', async(req, res) => {
   res.send(await service.delete(req.body.id_range))
 })
 
