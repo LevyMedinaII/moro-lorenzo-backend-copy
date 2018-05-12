@@ -12,7 +12,7 @@
   		xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
 					console.log(this.response);
-					// location.href = "home.html";
+					location.href = "home.html";
 				}
   		};
 			xhttp.open("GET", "http://moro-system.herokuapp.com/admins/login/current", true);

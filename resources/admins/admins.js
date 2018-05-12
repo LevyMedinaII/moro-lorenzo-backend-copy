@@ -44,8 +44,7 @@ router.get('/login/current', auth.ensureAdmin, async (req, res) => {
 // POST /logout
 // DESC: destroys current login session
 router.post('/logout', async (req, res) => {
-  await req.logout()
-  res.redirect('/index.html')
+  res.send(await req.logout())
 })
 
 // PUT /admins
