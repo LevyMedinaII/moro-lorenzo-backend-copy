@@ -41,7 +41,7 @@ router.get('/login/current', async (req, res) => {
   if (req.user)
     res.send(req.user)
   else
-    res.send(new Error('Not logged in'))
+    res.send(false)
 })
 
 // POST /logout
