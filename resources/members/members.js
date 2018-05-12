@@ -3,17 +3,17 @@ let service = require('./service')
 let auth = require('./../auth/auth')
 
 // GET /members
-router.get('/', auth.ensureAdmin, async (req, res) => {
+router.get('/', async (req, res) => {
   res.send(await service.get())
 })
 
 // GET /members/:id
-router.get('/:id', auth.ensureAdmin, async (req, res) => {
+router.get('/:id', async (req, res) => {
   res.send(await service.getOne(req.params.id))
 })
 
 // GET /members/weekly_report
-router.get('/weekly_report', auth.ensureAdmin, async (req, res) => {
+router.get('/weekly_report', async (req, res) => {
   res.send(await service.getWeeklyReport())
 })
 
@@ -38,7 +38,7 @@ router.get('/weekly_report', auth.ensureAdmin, async (req, res) => {
 // - STRING membership_status VALUES: ACTIVE, WARNING, EXPIRED
 // - STRING activity VALUES: Active, Inactive
 // - INTEGER/STRING membership_package_ids
-router.post('/', auth.ensureAdmin, async (req, res) => {
+router.post('/', async (req, res) => {
   res.send(await service.add(
     req.body.image,
     req.body.address,
@@ -80,7 +80,7 @@ router.post('/', auth.ensureAdmin, async (req, res) => {
 // - STRING membership_status VALUES: ACTIVE, WARNING, EXPIRED
 // - STRING activity VALUES: Active, Inactive
 // - INTEGER/STRING membership_package_ids
-router.put('/:id', auth.ensureAdmin, async (req, res) => {
+router.put('/:id', async (req, res) => {
   res.send(await service.update(
     req.params.id,
     req.body.image,
@@ -104,20 +104,20 @@ router.put('/:id', auth.ensureAdmin, async (req, res) => {
 })
 
 // DELETE /members/:id
-router.delete('/:id', auth.ensureAdmin, async (req, res) => {
+router.delete('/:id', async (req, res) => {
   res.send(await service.deleteOne(req.params.id))
 })
 
 // DELETE /members
 // Required Data:
 // - [STRING] id_range
-router.delete('/', auth.ensureAdmin, async (req, res) => {
+router.delete('/', async (req, res) => {
   res.send(await service.delete(req.body.id_range))
 })
 
 // DELETE /inactive
 // Description: Deletes all members with column activity = INACTIVE
-router.delete('/inactive', auth.ensureAdmin, async (req, res) => {
+router.delete('/inactive', async (req, res) => {
   res.send(await service.deleteInactive())
 })
 

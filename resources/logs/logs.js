@@ -3,12 +3,12 @@ let service = require('./service')
 let auth = require('./../auth/auth')
 
 // GET /logs
-router.get('/', auth.ensureAdmin, async (req, res) => {
+router.get('/', async (req, res) => {
   res.send(await service.get())
 })
 
 // GET /logs/:id
-router.get('/:id', auth.ensureAdmin, async (req, res) => {
+router.get('/:id', async (req, res) => {
   res.send(await service.getOne(req.params.id))
 })
 
@@ -18,7 +18,7 @@ router.get('/:id', auth.ensureAdmin, async (req, res) => {
 // - STRING person_id
 // - STRING date (DATE) FORMAT: YYYY-MM-DD
 // ---- e.g. 1996-12-27
-router.post('/', auth.ensureAdmin, async (req, res) => {
+router.post('/', async (req, res) => {
   res.send(await service.add(req.body.date, req.body.content, req.body.person_id))
 })
 
@@ -28,20 +28,20 @@ router.post('/', auth.ensureAdmin, async (req, res) => {
 // - STRING person_id
 // - STRING date (DATE) FORMAT: YYYY-MM-DD
 // ---- e.g. 1996-12-27
-router.put('/:id', auth.ensureAdmin, async (req, res) => {
+router.put('/:id', async (req, res) => {
   res.send(await service.add(req.params.id, req.body.date, req.body.content, req.body.person_id))
 })
 
 
 // DELETE /logs/:id
-router.delete('/:id', auth.ensureAdmin, async(req, res) => {
+router.delete('/:id', async(req, res) => {
   res.send(await service.deleteOne(req.params.id))
 })
 
 // DELETE /logs
 // Required Data:
 // - [STRING] id_range
-router.delete('/', auth.ensureAdmin, async(req, res) => {
+router.delete('/', async(req, res) => {
   res.send(await service.delete(req.body.id_range))
 })
 
