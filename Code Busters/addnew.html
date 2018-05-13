@@ -6,9 +6,10 @@
 	<title>Moro Gym</title>
 	<link rel="stylesheet" href="css/styles.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	 crossorigin="anonymous">
+	crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
@@ -24,6 +25,7 @@
 		<div class="primary-navigation">
 			<div class="header-nav">
 				<div class="header-nav-img">
+						<img src="photos/Group 38.png" alt="">
 				</div>
 				<div class="header-nav-title">
 					<p class="header-title-text">
@@ -38,24 +40,39 @@
 				</div>
 			</div>
 			<div class="nav-buttons">
-				<ul>
-					<li>
-						<a href="home.html">Home</a>
-					</li>
-					<li>
-						<a href="addnew.html" class="active">Add New Member</a>
-					</li>
-					<li>
-						<a href="members.html">List of Members</a>
-					</li>
-					<li>
-						<a href="sales.html">Sales Report</a>
-					</li>
-					<li>
-						<a onclick="logout()">Logout</a>
-					</li>
-				</ul>
-			</div>
+					<ul id="vertmenu">
+						<li>
+							<span class="home-link">
+								<a href="home.html" >
+									<img src="photos/home.png" alt=""> Home</a>
+							</span>
+						</li>
+						<li>
+							<span class="add-link">
+								<a href="addnew.html" class="active">
+									<img src="photos/adduser.png" alt="">Add New Member</a>
+							</span>
+						</li>
+						<li>
+							<span class="members-link"></span>
+							<a href="members.html">
+								<img src="photos/list.png" alt="">List of Members</a>
+							</span>
+						</li>
+						<li>
+							<span class="sales-link">
+								<a href="sales.html">
+									<img src="photos/report.png" alt="">Sales Report</a>
+							</span>
+						</li>
+						<li>
+							<span class="logout-link">
+								<a onclick="logout()">
+									<img src="photos/logout.png" alt="">Logout</a>
+							</span>
+						</li>
+					</ul>
+				</div>
 		</div>
 		<div class="page-content">
 			<p class="date">
@@ -90,7 +107,7 @@
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-								<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="getPhotoUrl()">Yes</button>
+								<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="getPhotoUrl(x)">Yes</button>
 							</div>
 						</div>
 					</div>
@@ -142,6 +159,12 @@
 		</div>
 	</div>
 	<script>
+		var x = "";
+		function getPhotoUrl(x) {
+			x = document.getElementById("photofile").value;
+			alert(x);
+		}
+		
 		function addMember() {
 			var xhttp = new XMLHttpRequest();
 			var image = x;
@@ -169,16 +192,12 @@
 					var popup = document.getElementById("myPopup");
 					popup.classList.toggle("show");
 				}
-			};;
+			};
+			var send_string = "photo="+image+"&idnum="+idnum +"&firstname="+first_name+"&lastname="+last_name+"&mi="+middle_initial+"&address="+address+"&sex="+sex +"&email="+email+"&birthday="+birthday+"&landline="+landline+"&mobilenum="+mobile_number+"&emercontact="+emergency_contact_number+"&package="+package_availed+"&startdate="+contract_begin+"&enddate="+contract_end+"&medinput="+medical_condition+"&cardstatus="+membership_card_status;
+			console.log(send_string)
 			xhttp.open("POST", "http://moro-system.herokuapp.com/members", true);
-			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			xhttp.send("photo="+image+"&idnum="+idnum +"&firstname="+first_name+"&lastname="+last_name+"&mi="+middle_initial+"&address="+address+"&sex="+sex +"&email="+email+"&birthday="+birthday+"&landline="+landline+"&mobilenum="+mobile_number+"&emercontact="+emergency_contact_number+"&package="+package_availed+"&startdate="+contract_begin+"&enddate="+contract_end+"&medinput="+medical_condition+"&cardstatus="+membership_card_status);
-		}
-	</script>
-	<script>
-		var x = "";
-		function getPhotoUrl() {
-			x = document.getElementById("photofile").value;
+			xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			xhttp.send(send_string);
 		}
 	</script>
 	<script>

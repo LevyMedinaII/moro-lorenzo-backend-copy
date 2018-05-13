@@ -6,28 +6,14 @@
 	<title>Moro Gym</title>
 	<link rel="stylesheet" href="css/styles.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	 crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
 	 crossorigin="anonymous">
-	</script>
-	<script>
-		function getData(){
-			var xhttp = new XMLHttpRequest();
-			var username = document.getElementById("username").value;
-			var password = document.getElementById("password").value;
-  		xhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-					// copy paste here
-				}
-  		};
-			xhttp.open("POST", "http://moro-system.herokuapp.com/admins/login", true);
-			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			xhttp.send("username="+username+"&password="+password);
-		}
-
-		getData();
 	</script>
 </head>
 
@@ -36,6 +22,7 @@
 		<div class="primary-navigation">
 			<div class="header-nav">
 				<div class="header-nav-img">
+					<img src="photos/Group 38.png" alt="">
 				</div>
 				<div class="header-nav-title">
 					<p class="header-title-text">
@@ -50,21 +37,36 @@
 				</div>
 			</div>
 			<div class="nav-buttons">
-				<ul>
+				<ul id="vertmenu">
 					<li>
-						<a href="home.html" class="active">Home</a>
+						<span class="home-link">
+							<a href="home.html" class="active">
+								<img src="photos/home.png" alt=""> Home</a>
+						</span>
 					</li>
 					<li>
-						<a href="addnew.html">Add New Member</a>
+						<span class="add-link">
+							<a href="addnew.html">
+								<img src="photos/adduser.png" alt="">Add New Member</a>
+						</span>
 					</li>
 					<li>
-						<a href="members.html">List of Members</a>
+						<span class="members-link"></span>
+						<a href="members.html">
+							<img src="photos/list.png" alt="">List of Members</a>
+						</span>
 					</li>
 					<li>
-						<a href="sales.html">Sales Report</a>
+						<span class="sales-link">
+							<a href="sales.html">
+								<img src="photos/report.png" alt="">Sales Report</a>
+						</span>
 					</li>
 					<li>
-						<a onclick="logout()">Logout</a>
+						<span class="logout-link">
+							<a onclick="logout()">
+								<img src="photos/logout.png" alt="">Logout</a>
+						</span>
 					</li>
 				</ul>
 			</div>
@@ -83,51 +85,55 @@
 						</script>
 					</p>
 					<h2 class="page-title">List of Clients Today</h2>
-					<table class="table">
-						<thead>
-							<tr>
-								<th>ID Number</th>
-								<th>Time-in</th>
-								<th>Time-out</th>
-								<th></th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>John</td>
-								<td>Doe</td>
-								<td>john@example.com</td>
-								<td>john@example.com</td>
-							</tr>
-							<tr>
-								<td>Mary</td>
-								<td>Moe</td>
-								<td>mary@example.com</td>
-								<td>john@example.com</td>
-							</tr>
-							<tr>
-								<td>July</td>
-								<td>Dooley</td>
-								<td>july@example.com</td>
-								<td>john@example.com</td>
-							</tr>
-						</tbody>
-					</table>
+					<div id="div3">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>ID Number</th>
+									<th>Time-in</th>
+									<th>Time-out</th>
+									<th>Type</th>
+								</tr>
+							</thead>
+						</table>
+					</div>
 		</div>
 	</div>
 </body>
 <script>
-	function logout() {
+	function seelist() {
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
+				alert(this.response);
+				var tbl = $("<table/>").attr("id", "mytable").attr("class", "table table-striped");
+				$("#div3").append(tbl);
+				$("#mytable").append(`
+						<thead>
+						<tr>
+						<th>Name</th>
+						<th>Time-in/th>
+						<th>Time-out</th>
+						<th>Type </th>
+					</tr>
+				</thead>`);
+				for (var i = 0; i < obj.length; i++) {
+					var tr = "<tr>";
+					var td1 = "<td>" + obj[i]["name"] + "</td>";
+					var td2 = "<td>" + obj[i]["lastname" + " firstname" + " mi"] + "</td>";
+					var td3 = "<td>" + obj[i]["membership_status"] + "</td>";
+					var td4 = "<td>" + obj[i]["membership_card_status"] + "</td>";
 
-				location.href = "index.html";
+					$("#mytable").append(tr + td1 + td2 + td3 + td4);
+
+				}
 			}
 		};
-		xhttp.open("POST", "http://moro-system.herokuapp.com/admins/logout", true);
+		xhttp.open("GET", "http://moro-system.herokuapp.com/visits", true);
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xhttp.send();
+
+		seelist();
 	}
 </script>
 

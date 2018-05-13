@@ -57,6 +57,7 @@ router.post('/', async (req, res) => {
     req.body.activity,
     req.body.membership_package_id
   ))
+
 })
 
 // PUT /members/:id
