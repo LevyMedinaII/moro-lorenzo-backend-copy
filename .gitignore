@@ -1,2 +1,4 @@
 node_modules
 todo.txt
+docker-compose.yml
+.env
